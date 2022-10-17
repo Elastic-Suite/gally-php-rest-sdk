@@ -1,0 +1,12 @@
+{
+  "modelPackage": "Model",
+  "apiPackage": "Api",
+  "variableNamingConvention": "camelCase",
+  "invokerPackage": "Gally\\Rest",
+  "packagePath": "gally-php",
+  "srcBasePath": "src/Rest",
+  "composerVendorName": "gally",
+  "composerProjectName": "gally-php-rest-sdk",
+  "gitUserId": "Elastic-Suite",
+  "gitRepoId": "gally-php"
+}
