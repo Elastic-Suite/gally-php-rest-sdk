@@ -1,7 +1,7 @@
 {
-  "name": "gally/gally",
-  "description": "PHP Client for Gally",
-  "keywords": ["search","client", "gally"],
+  "name": "gally/gally-php-rest-sdk",
+  "description": "PHP REST SDK for Gally",
+  "keywords": ["search","client", "gally", "rest", "sdk"],
   "type": "library",
   "license": [
     "Apache-2.0",
@@ -10,14 +10,16 @@
   "authors": [
     {
         "name": "The Elasticsuite team",
-	"email": "elasticsuite@smile.fr"
+	    "email": "elasticsuite@smile.fr"
     }
   ],
   "require": {
     "php": "^8.0",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
     "ext-json": ">=1.3.7",
-    "ezimuel/ringphp": "^1.1.2",
-    "psr/log": "^1|^2"
+    "guzzlehttp/guzzle": "^6.2"
   },
   "require-dev": {
     "ext-yaml": "*",
