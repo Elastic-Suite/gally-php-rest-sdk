@@ -1,6 +1,6 @@
 <?php
 /**
- * SourceFieldOption
+ * RuleEngineOperators
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * SourceFieldOption Class Doc Comment
+ * RuleEngineOperators Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SourceFieldOption implements ModelInterface, ArrayAccess
+class RuleEngineOperators implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'SourceFieldOption';
+    protected static $swaggerModelName = 'RuleEngineOperators';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,10 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'code' => 'string',
-        'sourceField' => 'string',
-        'position' => 'int',
-        'labels' => 'string[]'
+        'id' => 'string',
+        'operators' => 'string[]',
+        'operatorsBySourceFieldType' => 'string[]',
+        'operatorsValueType' => 'string[]'
     ];
 
     /**
@@ -71,10 +70,9 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => null,
-        'code' => null,
-        'sourceField' => 'iri-reference',
-        'position' => null,
-        'labels' => 'iri-reference'
+        'operators' => null,
+        'operatorsBySourceFieldType' => null,
+        'operatorsValueType' => null
     ];
 
     /**
@@ -105,10 +103,9 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'code' => 'code',
-        'sourceField' => 'sourceField',
-        'position' => 'position',
-        'labels' => 'labels'
+        'operators' => 'operators',
+        'operatorsBySourceFieldType' => 'operatorsBySourceFieldType',
+        'operatorsValueType' => 'operatorsValueType'
     ];
 
     /**
@@ -118,10 +115,9 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'code' => 'setCode',
-        'sourceField' => 'setSourceField',
-        'position' => 'setPosition',
-        'labels' => 'setLabels'
+        'operators' => 'setOperators',
+        'operatorsBySourceFieldType' => 'setOperatorsBySourceFieldType',
+        'operatorsValueType' => 'setOperatorsValueType'
     ];
 
     /**
@@ -131,10 +127,9 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'code' => 'getCode',
-        'sourceField' => 'getSourceField',
-        'position' => 'getPosition',
-        'labels' => 'getLabels'
+        'operators' => 'getOperators',
+        'operatorsBySourceFieldType' => 'getOperatorsBySourceFieldType',
+        'operatorsValueType' => 'getOperatorsValueType'
     ];
 
     /**
@@ -197,11 +192,10 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['sourceField'] = isset($data['sourceField']) ? $data['sourceField'] : null;
-        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
-        $this->container['labels'] = isset($data['labels']) ? $data['labels'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : 'rule_engine_operators';
+        $this->container['operators'] = isset($data['operators']) ? $data['operators'] : null;
+        $this->container['operatorsBySourceFieldType'] = isset($data['operatorsBySourceFieldType']) ? $data['operatorsBySourceFieldType'] : null;
+        $this->container['operatorsValueType'] = isset($data['operatorsValueType']) ? $data['operatorsValueType'] : null;
     }
 
     /**
@@ -213,12 +207,6 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['sourceField'] === null) {
-            $invalidProperties[] = "'sourceField' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -237,7 +225,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -247,7 +235,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id id
+     * @param string $id id
      *
      * @return $this
      */
@@ -259,97 +247,73 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code code
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets sourceField
-     *
-     * @return string
-     */
-    public function getSourceField()
-    {
-        return $this->container['sourceField'];
-    }
-
-    /**
-     * Sets sourceField
-     *
-     * @param string $sourceField sourceField
-     *
-     * @return $this
-     */
-    public function setSourceField($sourceField)
-    {
-        $this->container['sourceField'] = $sourceField;
-
-        return $this;
-    }
-
-    /**
-     * Gets position
-     *
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param int $position position
-     *
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
-
-        return $this;
-    }
-
-    /**
-     * Gets labels
+     * Gets operators
      *
      * @return string[]
      */
-    public function getLabels()
+    public function getOperators()
     {
-        return $this->container['labels'];
+        return $this->container['operators'];
     }
 
     /**
-     * Sets labels
+     * Sets operators
      *
-     * @param string[] $labels labels
+     * @param string[] $operators operators
      *
      * @return $this
      */
-    public function setLabels($labels)
+    public function setOperators($operators)
     {
-        $this->container['labels'] = $labels;
+        $this->container['operators'] = $operators;
+
+        return $this;
+    }
+
+    /**
+     * Gets operatorsBySourceFieldType
+     *
+     * @return string[]
+     */
+    public function getOperatorsBySourceFieldType()
+    {
+        return $this->container['operatorsBySourceFieldType'];
+    }
+
+    /**
+     * Sets operatorsBySourceFieldType
+     *
+     * @param string[] $operatorsBySourceFieldType operatorsBySourceFieldType
+     *
+     * @return $this
+     */
+    public function setOperatorsBySourceFieldType($operatorsBySourceFieldType)
+    {
+        $this->container['operatorsBySourceFieldType'] = $operatorsBySourceFieldType;
+
+        return $this;
+    }
+
+    /**
+     * Gets operatorsValueType
+     *
+     * @return string[]
+     */
+    public function getOperatorsValueType()
+    {
+        return $this->container['operatorsValueType'];
+    }
+
+    /**
+     * Sets operatorsValueType
+     *
+     * @param string[] $operatorsValueType operatorsValueType
+     *
+     * @return $this
+     */
+    public function setOperatorsValueType($operatorsValueType)
+    {
+        $this->container['operatorsValueType'] = $operatorsValueType;
 
         return $this;
     }

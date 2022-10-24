@@ -1,6 +1,6 @@
 <?php
 /**
- * SourceFieldOption
+ * RuleEngineGraphQlFilters
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * SourceFieldOption Class Doc Comment
+ * RuleEngineGraphQlFilters Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SourceFieldOption implements ModelInterface, ArrayAccess
+class RuleEngineGraphQlFilters implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'SourceFieldOption';
+    protected static $swaggerModelName = 'RuleEngineGraphQlFilters';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'code' => 'string',
-        'sourceField' => 'string',
-        'position' => 'int',
-        'labels' => 'string[]'
+        'id' => 'string',
+        'graphQlFilters' => 'string[]'
     ];
 
     /**
@@ -71,10 +68,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => null,
-        'code' => null,
-        'sourceField' => 'iri-reference',
-        'position' => null,
-        'labels' => 'iri-reference'
+        'graphQlFilters' => null
     ];
 
     /**
@@ -105,10 +99,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'code' => 'code',
-        'sourceField' => 'sourceField',
-        'position' => 'position',
-        'labels' => 'labels'
+        'graphQlFilters' => 'graphQlFilters'
     ];
 
     /**
@@ -118,10 +109,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'code' => 'setCode',
-        'sourceField' => 'setSourceField',
-        'position' => 'setPosition',
-        'labels' => 'setLabels'
+        'graphQlFilters' => 'setGraphQlFilters'
     ];
 
     /**
@@ -131,10 +119,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'code' => 'getCode',
-        'sourceField' => 'getSourceField',
-        'position' => 'getPosition',
-        'labels' => 'getLabels'
+        'graphQlFilters' => 'getGraphQlFilters'
     ];
 
     /**
@@ -197,11 +182,8 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['sourceField'] = isset($data['sourceField']) ? $data['sourceField'] : null;
-        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
-        $this->container['labels'] = isset($data['labels']) ? $data['labels'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : 'rule_engine_graphql_filters';
+        $this->container['graphQlFilters'] = isset($data['graphQlFilters']) ? $data['graphQlFilters'] : null;
     }
 
     /**
@@ -213,12 +195,6 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['sourceField'] === null) {
-            $invalidProperties[] = "'sourceField' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -237,7 +213,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -247,7 +223,7 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id id
+     * @param string $id id
      *
      * @return $this
      */
@@ -259,97 +235,25 @@ class SourceFieldOption implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code code
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets sourceField
-     *
-     * @return string
-     */
-    public function getSourceField()
-    {
-        return $this->container['sourceField'];
-    }
-
-    /**
-     * Sets sourceField
-     *
-     * @param string $sourceField sourceField
-     *
-     * @return $this
-     */
-    public function setSourceField($sourceField)
-    {
-        $this->container['sourceField'] = $sourceField;
-
-        return $this;
-    }
-
-    /**
-     * Gets position
-     *
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param int $position position
-     *
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
-
-        return $this;
-    }
-
-    /**
-     * Gets labels
+     * Gets graphQlFilters
      *
      * @return string[]
      */
-    public function getLabels()
+    public function getGraphQlFilters()
     {
-        return $this->container['labels'];
+        return $this->container['graphQlFilters'];
     }
 
     /**
-     * Sets labels
+     * Sets graphQlFilters
      *
-     * @param string[] $labels labels
+     * @param string[] $graphQlFilters graphQlFilters
      *
      * @return $this
      */
-    public function setLabels($labels)
+    public function setGraphQlFilters($graphQlFilters)
     {
-        $this->container['labels'] = $labels;
+        $this->container['graphQlFilters'] = $graphQlFilters;
 
         return $this;
     }

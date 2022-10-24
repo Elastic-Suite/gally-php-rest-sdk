@@ -330,15 +330,17 @@ class SourceFieldApi
      * Retrieves the collection of SourceField resources.
      *
      * @param  string $code code (optional)
-     * @param  string $defaultLabel defaultLabel (optional)
      * @param  string $type type (optional)
+     * @param  string[] $type2 type2 (optional)
      * @param  string $metadataEntity metadataEntity (optional)
      * @param  string[] $metadataEntity2 metadataEntity2 (optional)
      * @param  int $weight weight (optional)
      * @param  int[] $weight2 weight2 (optional)
+     * @param  string $defaultLabel defaultLabel (optional)
      * @param  bool $isSearchable isSearchable (optional)
      * @param  bool $isFilterable isFilterable (optional)
      * @param  bool $isSpellchecked isSpellchecked (optional)
+     * @param  bool $isUsedForRules isUsedForRules (optional)
      * @param  int $currentPage The collection page number (optional)
      * @param  int $pageSize The number of items per page (optional)
      * @param  bool $pagination Enable or disable pagination (optional)
@@ -347,9 +349,9 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return \Gally\Rest\Model\SourceFieldSourceFieldApi[]
      */
-    public function getSourceFieldCollection($code = null, $defaultLabel = null, $type = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $currentPage = null, $pageSize = null, $pagination = null)
+    public function getSourceFieldCollection($code = null, $type = null, $type2 = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $defaultLabel = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $isUsedForRules = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
-        list($response) = $this->getSourceFieldCollectionWithHttpInfo($code, $defaultLabel, $type, $metadataEntity, $metadataEntity2, $weight, $weight2, $isSearchable, $isFilterable, $isSpellchecked, $currentPage, $pageSize, $pagination);
+        list($response) = $this->getSourceFieldCollectionWithHttpInfo($code, $type, $type2, $metadataEntity, $metadataEntity2, $weight, $weight2, $defaultLabel, $isSearchable, $isFilterable, $isSpellchecked, $isUsedForRules, $currentPage, $pageSize, $pagination);
         return $response;
     }
 
@@ -359,15 +361,17 @@ class SourceFieldApi
      * Retrieves the collection of SourceField resources.
      *
      * @param  string $code (optional)
-     * @param  string $defaultLabel (optional)
      * @param  string $type (optional)
+     * @param  string[] $type2 (optional)
      * @param  string $metadataEntity (optional)
      * @param  string[] $metadataEntity2 (optional)
      * @param  int $weight (optional)
      * @param  int[] $weight2 (optional)
+     * @param  string $defaultLabel (optional)
      * @param  bool $isSearchable (optional)
      * @param  bool $isFilterable (optional)
      * @param  bool $isSpellchecked (optional)
+     * @param  bool $isUsedForRules (optional)
      * @param  int $currentPage The collection page number (optional)
      * @param  int $pageSize The number of items per page (optional)
      * @param  bool $pagination Enable or disable pagination (optional)
@@ -376,10 +380,10 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return array of \Gally\Rest\Model\SourceFieldSourceFieldApi[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSourceFieldCollectionWithHttpInfo($code = null, $defaultLabel = null, $type = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $currentPage = null, $pageSize = null, $pagination = null)
+    public function getSourceFieldCollectionWithHttpInfo($code = null, $type = null, $type2 = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $defaultLabel = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $isUsedForRules = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
         $returnType = '\Gally\Rest\Model\SourceFieldSourceFieldApi[]';
-        $request = $this->getSourceFieldCollectionRequest($code, $defaultLabel, $type, $metadataEntity, $metadataEntity2, $weight, $weight2, $isSearchable, $isFilterable, $isSpellchecked, $currentPage, $pageSize, $pagination);
+        $request = $this->getSourceFieldCollectionRequest($code, $type, $type2, $metadataEntity, $metadataEntity2, $weight, $weight2, $defaultLabel, $isSearchable, $isFilterable, $isSpellchecked, $isUsedForRules, $currentPage, $pageSize, $pagination);
 
         try {
             $options = $this->createHttpClientOption();
@@ -446,15 +450,17 @@ class SourceFieldApi
      * Retrieves the collection of SourceField resources.
      *
      * @param  string $code (optional)
-     * @param  string $defaultLabel (optional)
      * @param  string $type (optional)
+     * @param  string[] $type2 (optional)
      * @param  string $metadataEntity (optional)
      * @param  string[] $metadataEntity2 (optional)
      * @param  int $weight (optional)
      * @param  int[] $weight2 (optional)
+     * @param  string $defaultLabel (optional)
      * @param  bool $isSearchable (optional)
      * @param  bool $isFilterable (optional)
      * @param  bool $isSpellchecked (optional)
+     * @param  bool $isUsedForRules (optional)
      * @param  int $currentPage The collection page number (optional)
      * @param  int $pageSize The number of items per page (optional)
      * @param  bool $pagination Enable or disable pagination (optional)
@@ -462,9 +468,9 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSourceFieldCollectionAsync($code = null, $defaultLabel = null, $type = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $currentPage = null, $pageSize = null, $pagination = null)
+    public function getSourceFieldCollectionAsync($code = null, $type = null, $type2 = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $defaultLabel = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $isUsedForRules = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
-        return $this->getSourceFieldCollectionAsyncWithHttpInfo($code, $defaultLabel, $type, $metadataEntity, $metadataEntity2, $weight, $weight2, $isSearchable, $isFilterable, $isSpellchecked, $currentPage, $pageSize, $pagination)
+        return $this->getSourceFieldCollectionAsyncWithHttpInfo($code, $type, $type2, $metadataEntity, $metadataEntity2, $weight, $weight2, $defaultLabel, $isSearchable, $isFilterable, $isSpellchecked, $isUsedForRules, $currentPage, $pageSize, $pagination)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -478,15 +484,17 @@ class SourceFieldApi
      * Retrieves the collection of SourceField resources.
      *
      * @param  string $code (optional)
-     * @param  string $defaultLabel (optional)
      * @param  string $type (optional)
+     * @param  string[] $type2 (optional)
      * @param  string $metadataEntity (optional)
      * @param  string[] $metadataEntity2 (optional)
      * @param  int $weight (optional)
      * @param  int[] $weight2 (optional)
+     * @param  string $defaultLabel (optional)
      * @param  bool $isSearchable (optional)
      * @param  bool $isFilterable (optional)
      * @param  bool $isSpellchecked (optional)
+     * @param  bool $isUsedForRules (optional)
      * @param  int $currentPage The collection page number (optional)
      * @param  int $pageSize The number of items per page (optional)
      * @param  bool $pagination Enable or disable pagination (optional)
@@ -494,10 +502,10 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSourceFieldCollectionAsyncWithHttpInfo($code = null, $defaultLabel = null, $type = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $currentPage = null, $pageSize = null, $pagination = null)
+    public function getSourceFieldCollectionAsyncWithHttpInfo($code = null, $type = null, $type2 = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $defaultLabel = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $isUsedForRules = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
         $returnType = '\Gally\Rest\Model\SourceFieldSourceFieldApi[]';
-        $request = $this->getSourceFieldCollectionRequest($code, $defaultLabel, $type, $metadataEntity, $metadataEntity2, $weight, $weight2, $isSearchable, $isFilterable, $isSpellchecked, $currentPage, $pageSize, $pagination);
+        $request = $this->getSourceFieldCollectionRequest($code, $type, $type2, $metadataEntity, $metadataEntity2, $weight, $weight2, $defaultLabel, $isSearchable, $isFilterable, $isSpellchecked, $isUsedForRules, $currentPage, $pageSize, $pagination);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -540,15 +548,17 @@ class SourceFieldApi
      * Create request for operation 'getSourceFieldCollection'
      *
      * @param  string $code (optional)
-     * @param  string $defaultLabel (optional)
      * @param  string $type (optional)
+     * @param  string[] $type2 (optional)
      * @param  string $metadataEntity (optional)
      * @param  string[] $metadataEntity2 (optional)
      * @param  int $weight (optional)
      * @param  int[] $weight2 (optional)
+     * @param  string $defaultLabel (optional)
      * @param  bool $isSearchable (optional)
      * @param  bool $isFilterable (optional)
      * @param  bool $isSpellchecked (optional)
+     * @param  bool $isUsedForRules (optional)
      * @param  int $currentPage The collection page number (optional)
      * @param  int $pageSize The number of items per page (optional)
      * @param  bool $pagination Enable or disable pagination (optional)
@@ -556,7 +566,7 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getSourceFieldCollectionRequest($code = null, $defaultLabel = null, $type = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $currentPage = null, $pageSize = null, $pagination = null)
+    protected function getSourceFieldCollectionRequest($code = null, $type = null, $type2 = null, $metadataEntity = null, $metadataEntity2 = null, $weight = null, $weight2 = null, $defaultLabel = null, $isSearchable = null, $isFilterable = null, $isSpellchecked = null, $isUsedForRules = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
 
         $resourcePath = '/source_fields';
@@ -571,12 +581,15 @@ class SourceFieldApi
             $queryParams['code'] = ObjectSerializer::toQueryValue($code);
         }
         // query params
-        if ($defaultLabel !== null) {
-            $queryParams['defaultLabel'] = ObjectSerializer::toQueryValue($defaultLabel);
-        }
-        // query params
         if ($type !== null) {
             $queryParams['type'] = ObjectSerializer::toQueryValue($type);
+        }
+        // query params
+        if (is_array($type2)) {
+            $queryParams['type[]'] = $type2;
+        } else
+        if ($type2 !== null) {
+            $queryParams['type[]'] = ObjectSerializer::toQueryValue($type2);
         }
         // query params
         if ($metadataEntity !== null) {
@@ -601,6 +614,10 @@ class SourceFieldApi
             $queryParams['weight[]'] = ObjectSerializer::toQueryValue($weight2);
         }
         // query params
+        if ($defaultLabel !== null) {
+            $queryParams['defaultLabel'] = ObjectSerializer::toQueryValue($defaultLabel);
+        }
+        // query params
         if ($isSearchable !== null) {
             $queryParams['isSearchable'] = ObjectSerializer::toQueryValue($isSearchable);
         }
@@ -611,6 +628,10 @@ class SourceFieldApi
         // query params
         if ($isSpellchecked !== null) {
             $queryParams['isSpellchecked'] = ObjectSerializer::toQueryValue($isSpellchecked);
+        }
+        // query params
+        if ($isUsedForRules !== null) {
+            $queryParams['isUsedForRules'] = ObjectSerializer::toQueryValue($isUsedForRules);
         }
         // query params
         if ($currentPage !== null) {
