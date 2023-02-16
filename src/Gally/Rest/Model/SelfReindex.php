@@ -1,6 +1,6 @@
 <?php
 /**
- * CategoryProductMerchandisingCategoryProductMerchandisingWrite
+ * SelfReindex
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * CategoryProductMerchandisingCategoryProductMerchandisingWrite Class Doc Comment
+ * SelfReindex Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements ModelInterface, ArrayAccess
+class SelfReindex implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CategoryProductMerchandising-category_product_merchandising.write';
+    protected static $swaggerModelName = 'SelfReindex';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,10 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'category' => 'string',
-        'productId' => 'int',
-        'catalog' => 'string',
-        'localizedCatalog' => 'string',
-        'position' => 'int'
+        'id' => 'string',
+        'entityTypes' => 'string[]',
+        'status' => 'string',
+        'indexNames' => 'string[]'
     ];
 
     /**
@@ -72,11 +70,9 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       */
     protected static $swaggerFormats = [
         'id' => null,
-        'category' => 'iri-reference',
-        'productId' => null,
-        'catalog' => 'iri-reference',
-        'localizedCatalog' => 'iri-reference',
-        'position' => null
+        'entityTypes' => null,
+        'status' => null,
+        'indexNames' => null
     ];
 
     /**
@@ -107,11 +103,9 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'category' => 'category',
-        'productId' => 'productId',
-        'catalog' => 'catalog',
-        'localizedCatalog' => 'localizedCatalog',
-        'position' => 'position'
+        'entityTypes' => 'entityTypes',
+        'status' => 'status',
+        'indexNames' => 'indexNames'
     ];
 
     /**
@@ -121,11 +115,9 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      */
     protected static $setters = [
         'id' => 'setId',
-        'category' => 'setCategory',
-        'productId' => 'setProductId',
-        'catalog' => 'setCatalog',
-        'localizedCatalog' => 'setLocalizedCatalog',
-        'position' => 'setPosition'
+        'entityTypes' => 'setEntityTypes',
+        'status' => 'setStatus',
+        'indexNames' => 'setIndexNames'
     ];
 
     /**
@@ -135,11 +127,9 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      */
     protected static $getters = [
         'id' => 'getId',
-        'category' => 'getCategory',
-        'productId' => 'getProductId',
-        'catalog' => 'getCatalog',
-        'localizedCatalog' => 'getLocalizedCatalog',
-        'position' => 'getPosition'
+        'entityTypes' => 'getEntityTypes',
+        'status' => 'getStatus',
+        'indexNames' => 'getIndexNames'
     ];
 
     /**
@@ -203,11 +193,9 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
-        $this->container['productId'] = isset($data['productId']) ? $data['productId'] : null;
-        $this->container['catalog'] = isset($data['catalog']) ? $data['catalog'] : null;
-        $this->container['localizedCatalog'] = isset($data['localizedCatalog']) ? $data['localizedCatalog'] : null;
-        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
+        $this->container['entityTypes'] = isset($data['entityTypes']) ? $data['entityTypes'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['indexNames'] = isset($data['indexNames']) ? $data['indexNames'] : null;
     }
 
     /**
@@ -237,7 +225,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -247,7 +235,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     /**
      * Sets id
      *
-     * @param int $id id
+     * @param string $id id
      *
      * @return $this
      */
@@ -259,121 +247,73 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     }
 
     /**
-     * Gets category
+     * Gets entityTypes
+     *
+     * @return string[]
+     */
+    public function getEntityTypes()
+    {
+        return $this->container['entityTypes'];
+    }
+
+    /**
+     * Sets entityTypes
+     *
+     * @param string[] $entityTypes Get entity types for which reindexing should occur.
+     *
+     * @return $this
+     */
+    public function setEntityTypes($entityTypes)
+    {
+        $this->container['entityTypes'] = $entityTypes;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
      *
      * @return string
      */
-    public function getCategory()
+    public function getStatus()
     {
-        return $this->container['category'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets category
+     * Sets status
      *
-     * @param string $category category
+     * @param string $status Get current self-reindex status.
      *
      * @return $this
      */
-    public function setCategory($category)
+    public function setStatus($status)
     {
-        $this->container['category'] = $category;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets productId
+     * Gets indexNames
      *
-     * @return int
+     * @return string[]
      */
-    public function getProductId()
+    public function getIndexNames()
     {
-        return $this->container['productId'];
+        return $this->container['indexNames'];
     }
 
     /**
-     * Sets productId
+     * Sets indexNames
      *
-     * @param int $productId productId
+     * @param string[] $indexNames Get the list of index names created so far by the self-reindex.
      *
      * @return $this
      */
-    public function setProductId($productId)
+    public function setIndexNames($indexNames)
     {
-        $this->container['productId'] = $productId;
-
-        return $this;
-    }
-
-    /**
-     * Gets catalog
-     *
-     * @return string
-     */
-    public function getCatalog()
-    {
-        return $this->container['catalog'];
-    }
-
-    /**
-     * Sets catalog
-     *
-     * @param string $catalog catalog
-     *
-     * @return $this
-     */
-    public function setCatalog($catalog)
-    {
-        $this->container['catalog'] = $catalog;
-
-        return $this;
-    }
-
-    /**
-     * Gets localizedCatalog
-     *
-     * @return string
-     */
-    public function getLocalizedCatalog()
-    {
-        return $this->container['localizedCatalog'];
-    }
-
-    /**
-     * Sets localizedCatalog
-     *
-     * @param string $localizedCatalog localizedCatalog
-     *
-     * @return $this
-     */
-    public function setLocalizedCatalog($localizedCatalog)
-    {
-        $this->container['localizedCatalog'] = $localizedCatalog;
-
-        return $this;
-    }
-
-    /**
-     * Gets position
-     *
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param int $position position
-     *
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
+        $this->container['indexNames'] = $indexNames;
 
         return $this;
     }

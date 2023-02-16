@@ -1,6 +1,6 @@
 <?php
 /**
- * CategoryProductMerchandisingCategoryProductMerchandisingWrite
+ * SourceFieldOptionLabelSourceFieldOptionRead
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * CategoryProductMerchandisingCategoryProductMerchandisingWrite Class Doc Comment
+ * SourceFieldOptionLabelSourceFieldOptionRead Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements ModelInterface, ArrayAccess
+class SourceFieldOptionLabelSourceFieldOptionRead implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CategoryProductMerchandising-category_product_merchandising.write';
+    protected static $swaggerModelName = 'SourceFieldOptionLabel-source_field_option.read';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,8 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'category' => 'string',
-        'productId' => 'int',
-        'catalog' => 'string',
-        'localizedCatalog' => 'string',
-        'position' => 'int'
+        'localizedCatalog' => '\Gally\Rest\Model\LocalizedCatalogSourceFieldOptionRead',
+        'label' => 'string'
     ];
 
     /**
@@ -71,12 +67,8 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'category' => 'iri-reference',
-        'productId' => null,
-        'catalog' => 'iri-reference',
-        'localizedCatalog' => 'iri-reference',
-        'position' => null
+        'localizedCatalog' => null,
+        'label' => null
     ];
 
     /**
@@ -106,12 +98,8 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'category' => 'category',
-        'productId' => 'productId',
-        'catalog' => 'catalog',
         'localizedCatalog' => 'localizedCatalog',
-        'position' => 'position'
+        'label' => 'label'
     ];
 
     /**
@@ -120,12 +108,8 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'category' => 'setCategory',
-        'productId' => 'setProductId',
-        'catalog' => 'setCatalog',
         'localizedCatalog' => 'setLocalizedCatalog',
-        'position' => 'setPosition'
+        'label' => 'setLabel'
     ];
 
     /**
@@ -134,12 +118,8 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'category' => 'getCategory',
-        'productId' => 'getProductId',
-        'catalog' => 'getCatalog',
         'localizedCatalog' => 'getLocalizedCatalog',
-        'position' => 'getPosition'
+        'label' => 'getLabel'
     ];
 
     /**
@@ -202,12 +182,8 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
-        $this->container['productId'] = isset($data['productId']) ? $data['productId'] : null;
-        $this->container['catalog'] = isset($data['catalog']) ? $data['catalog'] : null;
         $this->container['localizedCatalog'] = isset($data['localizedCatalog']) ? $data['localizedCatalog'] : null;
-        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
     }
 
     /**
@@ -219,6 +195,12 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     {
         $invalidProperties = [];
 
+        if ($this->container['localizedCatalog'] === null) {
+            $invalidProperties[] = "'localizedCatalog' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -235,105 +217,9 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
 
 
     /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets category
-     *
-     * @return string
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param string $category category
-     *
-     * @return $this
-     */
-    public function setCategory($category)
-    {
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets productId
-     *
-     * @return int
-     */
-    public function getProductId()
-    {
-        return $this->container['productId'];
-    }
-
-    /**
-     * Sets productId
-     *
-     * @param int $productId productId
-     *
-     * @return $this
-     */
-    public function setProductId($productId)
-    {
-        $this->container['productId'] = $productId;
-
-        return $this;
-    }
-
-    /**
-     * Gets catalog
-     *
-     * @return string
-     */
-    public function getCatalog()
-    {
-        return $this->container['catalog'];
-    }
-
-    /**
-     * Sets catalog
-     *
-     * @param string $catalog catalog
-     *
-     * @return $this
-     */
-    public function setCatalog($catalog)
-    {
-        $this->container['catalog'] = $catalog;
-
-        return $this;
-    }
-
-    /**
      * Gets localizedCatalog
      *
-     * @return string
+     * @return \Gally\Rest\Model\LocalizedCatalogSourceFieldOptionRead
      */
     public function getLocalizedCatalog()
     {
@@ -343,7 +229,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     /**
      * Sets localizedCatalog
      *
-     * @param string $localizedCatalog localizedCatalog
+     * @param \Gally\Rest\Model\LocalizedCatalogSourceFieldOptionRead $localizedCatalog localizedCatalog
      *
      * @return $this
      */
@@ -355,25 +241,25 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     }
 
     /**
-     * Gets position
+     * Gets label
      *
-     * @return int
+     * @return string
      */
-    public function getPosition()
+    public function getLabel()
     {
-        return $this->container['position'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets position
+     * Sets label
      *
-     * @param int $position position
+     * @param string $label label
      *
      * @return $this
      */
-    public function setPosition($position)
+    public function setLabel($label)
     {
-        $this->container['position'] = $position;
+        $this->container['label'] = $label;
 
         return $this;
     }

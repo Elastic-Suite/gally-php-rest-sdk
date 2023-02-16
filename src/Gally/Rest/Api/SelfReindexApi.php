@@ -1,6 +1,6 @@
 <?php
 /**
- * CategoryProductMerchandisingApi
+ * SelfReindexApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Gally\Rest\HeaderSelector;
 use Gally\Rest\ObjectSerializer;
 
 /**
- * CategoryProductMerchandisingApi Class Doc Comment
+ * SelfReindexApi Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CategoryProductMerchandisingApi
+class SelfReindexApi
 {
     /**
      * @var ClientInterface
@@ -88,9 +88,9 @@ class CategoryProductMerchandisingApi
     }
 
     /**
-     * Operation getCategoryProductMerchandisingItem
+     * Operation getSelfReindexItem
      *
-     * Retrieves a CategoryProductMerchandising resource.
+     * Retrieves a SelfReindex resource.
      *
      * @param  string $id id (required)
      *
@@ -98,15 +98,15 @@ class CategoryProductMerchandisingApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function getCategoryProductMerchandisingItem($id)
+    public function getSelfReindexItem($id)
     {
-        $this->getCategoryProductMerchandisingItemWithHttpInfo($id);
+        $this->getSelfReindexItemWithHttpInfo($id);
     }
 
     /**
-     * Operation getCategoryProductMerchandisingItemWithHttpInfo
+     * Operation getSelfReindexItemWithHttpInfo
      *
-     * Retrieves a CategoryProductMerchandising resource.
+     * Retrieves a SelfReindex resource.
      *
      * @param  string $id (required)
      *
@@ -114,10 +114,10 @@ class CategoryProductMerchandisingApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCategoryProductMerchandisingItemWithHttpInfo($id)
+    public function getSelfReindexItemWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->getCategoryProductMerchandisingItemRequest($id);
+        $request = $this->getSelfReindexItemRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -157,18 +157,18 @@ class CategoryProductMerchandisingApi
     }
 
     /**
-     * Operation getCategoryProductMerchandisingItemAsync
+     * Operation getSelfReindexItemAsync
      *
-     * Retrieves a CategoryProductMerchandising resource.
+     * Retrieves a SelfReindex resource.
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCategoryProductMerchandisingItemAsync($id)
+    public function getSelfReindexItemAsync($id)
     {
-        return $this->getCategoryProductMerchandisingItemAsyncWithHttpInfo($id)
+        return $this->getSelfReindexItemAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -177,19 +177,19 @@ class CategoryProductMerchandisingApi
     }
 
     /**
-     * Operation getCategoryProductMerchandisingItemAsyncWithHttpInfo
+     * Operation getSelfReindexItemAsyncWithHttpInfo
      *
-     * Retrieves a CategoryProductMerchandising resource.
+     * Retrieves a SelfReindex resource.
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCategoryProductMerchandisingItemAsyncWithHttpInfo($id)
+    public function getSelfReindexItemAsyncWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->getCategoryProductMerchandisingItemRequest($id);
+        $request = $this->getSelfReindexItemRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -215,23 +215,23 @@ class CategoryProductMerchandisingApi
     }
 
     /**
-     * Create request for operation 'getCategoryProductMerchandisingItem'
+     * Create request for operation 'getSelfReindexItem'
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getCategoryProductMerchandisingItemRequest($id)
+    protected function getSelfReindexItemRequest($id)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getCategoryProductMerchandisingItem'
+                'Missing the required parameter $id when calling getSelfReindexItem'
             );
         }
 
-        $resourcePath = '/category_product_merchandisings/{id}';
+        $resourcePath = '/indices/self-reindex';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -325,37 +325,37 @@ class CategoryProductMerchandisingApi
     }
 
     /**
-     * Operation getPositionsCategoryProductMerchandisingItem
+     * Operation postSelfReindexCollection
      *
-     * Retrieves a CategoryProductMerchandising resource.
+     * Creates a SelfReindex resource.
      *
-     * @param  string $id id (required)
+     * @param  \Gally\Rest\Model\SelfReindexSelfReindexInput $selfReindex The new SelfReindex resource (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead
+     * @return \Gally\Rest\Model\SelfReindex
      */
-    public function getPositionsCategoryProductMerchandisingItem($id)
+    public function postSelfReindexCollection($selfReindex = null)
     {
-        list($response) = $this->getPositionsCategoryProductMerchandisingItemWithHttpInfo($id);
+        list($response) = $this->postSelfReindexCollectionWithHttpInfo($selfReindex);
         return $response;
     }
 
     /**
-     * Operation getPositionsCategoryProductMerchandisingItemWithHttpInfo
+     * Operation postSelfReindexCollectionWithHttpInfo
      *
-     * Retrieves a CategoryProductMerchandising resource.
+     * Creates a SelfReindex resource.
      *
-     * @param  string $id (required)
+     * @param  \Gally\Rest\Model\SelfReindexSelfReindexInput $selfReindex The new SelfReindex resource (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gally\Rest\Model\SelfReindex, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPositionsCategoryProductMerchandisingItemWithHttpInfo($id)
+    public function postSelfReindexCollectionWithHttpInfo($selfReindex = null)
     {
-        $returnType = '\Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead';
-        $request = $this->getPositionsCategoryProductMerchandisingItemRequest($id);
+        $returnType = '\Gally\Rest\Model\SelfReindex';
+        $request = $this->postSelfReindexCollectionRequest($selfReindex);
 
         try {
             $options = $this->createHttpClientOption();
@@ -403,10 +403,10 @@ class CategoryProductMerchandisingApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead',
+                        '\Gally\Rest\Model\SelfReindex',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -417,18 +417,18 @@ class CategoryProductMerchandisingApi
     }
 
     /**
-     * Operation getPositionsCategoryProductMerchandisingItemAsync
+     * Operation postSelfReindexCollectionAsync
      *
-     * Retrieves a CategoryProductMerchandising resource.
+     * Creates a SelfReindex resource.
      *
-     * @param  string $id (required)
+     * @param  \Gally\Rest\Model\SelfReindexSelfReindexInput $selfReindex The new SelfReindex resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPositionsCategoryProductMerchandisingItemAsync($id)
+    public function postSelfReindexCollectionAsync($selfReindex = null)
     {
-        return $this->getPositionsCategoryProductMerchandisingItemAsyncWithHttpInfo($id)
+        return $this->postSelfReindexCollectionAsyncWithHttpInfo($selfReindex)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -437,19 +437,19 @@ class CategoryProductMerchandisingApi
     }
 
     /**
-     * Operation getPositionsCategoryProductMerchandisingItemAsyncWithHttpInfo
+     * Operation postSelfReindexCollectionAsyncWithHttpInfo
      *
-     * Retrieves a CategoryProductMerchandising resource.
+     * Creates a SelfReindex resource.
      *
-     * @param  string $id (required)
+     * @param  \Gally\Rest\Model\SelfReindexSelfReindexInput $selfReindex The new SelfReindex resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPositionsCategoryProductMerchandisingItemAsyncWithHttpInfo($id)
+    public function postSelfReindexCollectionAsyncWithHttpInfo($selfReindex = null)
     {
-        $returnType = '\Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead';
-        $request = $this->getPositionsCategoryProductMerchandisingItemRequest($id);
+        $returnType = '\Gally\Rest\Model\SelfReindex';
+        $request = $this->postSelfReindexCollectionRequest($selfReindex);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -489,291 +489,17 @@ class CategoryProductMerchandisingApi
     }
 
     /**
-     * Create request for operation 'getPositionsCategoryProductMerchandisingItem'
+     * Create request for operation 'postSelfReindexCollection'
      *
-     * @param  string $id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function getPositionsCategoryProductMerchandisingItemRequest($id)
-    {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getPositionsCategoryProductMerchandisingItem'
-            );
-        }
-
-        $resourcePath = '/category_product_merchandisings/getPositions/{categoryId}/{localizedCatalogId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/ld+json', 'application/json', 'text/html']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/ld+json', 'application/json', 'text/html'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            
-            if($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postPositionsCategoryProductMerchandisingCollection
-     *
-     * Creates a CategoryProductMerchandising resource.
-     *
-     * @param  \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingWrite $categoryProductMerchandising The new CategoryProductMerchandising resource (optional)
-     *
-     * @throws \Gally\Rest\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead
-     */
-    public function postPositionsCategoryProductMerchandisingCollection($categoryProductMerchandising = null)
-    {
-        list($response) = $this->postPositionsCategoryProductMerchandisingCollectionWithHttpInfo($categoryProductMerchandising);
-        return $response;
-    }
-
-    /**
-     * Operation postPositionsCategoryProductMerchandisingCollectionWithHttpInfo
-     *
-     * Creates a CategoryProductMerchandising resource.
-     *
-     * @param  \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingWrite $categoryProductMerchandising The new CategoryProductMerchandising resource (optional)
-     *
-     * @throws \Gally\Rest\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postPositionsCategoryProductMerchandisingCollectionWithHttpInfo($categoryProductMerchandising = null)
-    {
-        $returnType = '\Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead';
-        $request = $this->postPositionsCategoryProductMerchandisingCollectionRequest($categoryProductMerchandising);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postPositionsCategoryProductMerchandisingCollectionAsync
-     *
-     * Creates a CategoryProductMerchandising resource.
-     *
-     * @param  \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingWrite $categoryProductMerchandising The new CategoryProductMerchandising resource (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postPositionsCategoryProductMerchandisingCollectionAsync($categoryProductMerchandising = null)
-    {
-        return $this->postPositionsCategoryProductMerchandisingCollectionAsyncWithHttpInfo($categoryProductMerchandising)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postPositionsCategoryProductMerchandisingCollectionAsyncWithHttpInfo
-     *
-     * Creates a CategoryProductMerchandising resource.
-     *
-     * @param  \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingWrite $categoryProductMerchandising The new CategoryProductMerchandising resource (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postPositionsCategoryProductMerchandisingCollectionAsyncWithHttpInfo($categoryProductMerchandising = null)
-    {
-        $returnType = '\Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingResultRead';
-        $request = $this->postPositionsCategoryProductMerchandisingCollectionRequest($categoryProductMerchandising);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postPositionsCategoryProductMerchandisingCollection'
-     *
-     * @param  \Gally\Rest\Model\CategoryProductMerchandisingCategoryProductMerchandisingWrite $categoryProductMerchandising The new CategoryProductMerchandising resource (optional)
+     * @param  \Gally\Rest\Model\SelfReindexSelfReindexInput $selfReindex The new SelfReindex resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function postPositionsCategoryProductMerchandisingCollectionRequest($categoryProductMerchandising = null)
+    protected function postSelfReindexCollectionRequest($selfReindex = null)
     {
 
-        $resourcePath = '/category_product_merchandisings/savePositions/{categoryId}';
+        $resourcePath = '/indices/self-reindex';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -784,8 +510,8 @@ class CategoryProductMerchandisingApi
 
         // body params
         $_tempBody = null;
-        if (isset($categoryProductMerchandising)) {
-            $_tempBody = $categoryProductMerchandising;
+        if (isset($selfReindex)) {
+            $_tempBody = $selfReindex;
         }
 
         if ($multipart) {

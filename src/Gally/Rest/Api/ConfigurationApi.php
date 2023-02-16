@@ -1,6 +1,6 @@
 <?php
 /**
- * AuthenticationApi
+ * ConfigurationApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Gally\Rest\HeaderSelector;
 use Gally\Rest\ObjectSerializer;
 
 /**
- * AuthenticationApi Class Doc Comment
+ * ConfigurationApi Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AuthenticationApi
+class ConfigurationApi
 {
     /**
      * @var ClientInterface
@@ -88,36 +88,37 @@ class AuthenticationApi
     }
 
     /**
-     * Operation getAuthenticationItem
+     * Operation getConfigurationCollection
      *
-     * Retrieves a Authentication resource.
+     * Retrieves the collection of Configuration resources.
      *
-     * @param  string $id id (required)
+     * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Gally\Rest\Model\Configuration[]
      */
-    public function getAuthenticationItem($id)
+    public function getConfigurationCollection($pagination = null)
     {
-        $this->getAuthenticationItemWithHttpInfo($id);
+        list($response) = $this->getConfigurationCollectionWithHttpInfo($pagination);
+        return $response;
     }
 
     /**
-     * Operation getAuthenticationItemWithHttpInfo
+     * Operation getConfigurationCollectionWithHttpInfo
      *
-     * Retrieves a Authentication resource.
+     * Retrieves the collection of Configuration resources.
      *
-     * @param  string $id (required)
+     * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gally\Rest\Model\Configuration[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuthenticationItemWithHttpInfo($id)
+    public function getConfigurationCollectionWithHttpInfo($pagination = null)
     {
-        $returnType = '';
-        $request = $this->getAuthenticationItemRequest($id);
+        $returnType = '\Gally\Rest\Model\Configuration[]';
+        $request = $this->getConfigurationCollectionRequest($pagination);
 
         try {
             $options = $this->createHttpClientOption();
@@ -147,28 +148,50 @@ class AuthenticationApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Gally\Rest\Model\Configuration[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation getAuthenticationItemAsync
+     * Operation getConfigurationCollectionAsync
      *
-     * Retrieves a Authentication resource.
+     * Retrieves the collection of Configuration resources.
      *
-     * @param  string $id (required)
+     * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuthenticationItemAsync($id)
+    public function getConfigurationCollectionAsync($pagination = null)
     {
-        return $this->getAuthenticationItemAsyncWithHttpInfo($id)
+        return $this->getConfigurationCollectionAsyncWithHttpInfo($pagination)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -177,25 +200,39 @@ class AuthenticationApi
     }
 
     /**
-     * Operation getAuthenticationItemAsyncWithHttpInfo
+     * Operation getConfigurationCollectionAsyncWithHttpInfo
      *
-     * Retrieves a Authentication resource.
+     * Retrieves the collection of Configuration resources.
      *
-     * @param  string $id (required)
+     * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuthenticationItemAsyncWithHttpInfo($id)
+    public function getConfigurationCollectionAsyncWithHttpInfo($pagination = null)
     {
-        $returnType = '';
-        $request = $this->getAuthenticationItemRequest($id);
+        $returnType = '\Gally\Rest\Model\Configuration[]';
+        $request = $this->getConfigurationCollectionRequest($pagination);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -215,38 +252,28 @@ class AuthenticationApi
     }
 
     /**
-     * Create request for operation 'getAuthenticationItem'
+     * Create request for operation 'getConfigurationCollection'
      *
-     * @param  string $id (required)
+     * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAuthenticationItemRequest($id)
+    protected function getConfigurationCollectionRequest($pagination = null)
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getAuthenticationItem'
-            );
-        }
 
-        $resourcePath = '/authentications/{id}';
+        $resourcePath = '/configurations';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
+        // query params
+        if ($pagination !== null) {
+            $queryParams['pagination'] = ObjectSerializer::toQueryValue($pagination);
         }
+
 
         // body params
         $_tempBody = null;

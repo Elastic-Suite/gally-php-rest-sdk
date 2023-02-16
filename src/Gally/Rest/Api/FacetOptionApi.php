@@ -1,6 +1,6 @@
 <?php
 /**
- * AuthenticationApi
+ * FacetOptionApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Gally\Rest\HeaderSelector;
 use Gally\Rest\ObjectSerializer;
 
 /**
- * AuthenticationApi Class Doc Comment
+ * FacetOptionApi Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AuthenticationApi
+class FacetOptionApi
 {
     /**
      * @var ClientInterface
@@ -88,9 +88,9 @@ class AuthenticationApi
     }
 
     /**
-     * Operation getAuthenticationItem
+     * Operation getFacetOptionItem
      *
-     * Retrieves a Authentication resource.
+     * Retrieves a FacetOption resource.
      *
      * @param  string $id id (required)
      *
@@ -98,15 +98,15 @@ class AuthenticationApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function getAuthenticationItem($id)
+    public function getFacetOptionItem($id)
     {
-        $this->getAuthenticationItemWithHttpInfo($id);
+        $this->getFacetOptionItemWithHttpInfo($id);
     }
 
     /**
-     * Operation getAuthenticationItemWithHttpInfo
+     * Operation getFacetOptionItemWithHttpInfo
      *
-     * Retrieves a Authentication resource.
+     * Retrieves a FacetOption resource.
      *
      * @param  string $id (required)
      *
@@ -114,10 +114,10 @@ class AuthenticationApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuthenticationItemWithHttpInfo($id)
+    public function getFacetOptionItemWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->getAuthenticationItemRequest($id);
+        $request = $this->getFacetOptionItemRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -157,18 +157,18 @@ class AuthenticationApi
     }
 
     /**
-     * Operation getAuthenticationItemAsync
+     * Operation getFacetOptionItemAsync
      *
-     * Retrieves a Authentication resource.
+     * Retrieves a FacetOption resource.
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuthenticationItemAsync($id)
+    public function getFacetOptionItemAsync($id)
     {
-        return $this->getAuthenticationItemAsyncWithHttpInfo($id)
+        return $this->getFacetOptionItemAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -177,19 +177,19 @@ class AuthenticationApi
     }
 
     /**
-     * Operation getAuthenticationItemAsyncWithHttpInfo
+     * Operation getFacetOptionItemAsyncWithHttpInfo
      *
-     * Retrieves a Authentication resource.
+     * Retrieves a FacetOption resource.
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuthenticationItemAsyncWithHttpInfo($id)
+    public function getFacetOptionItemAsyncWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->getAuthenticationItemRequest($id);
+        $request = $this->getFacetOptionItemRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -215,23 +215,23 @@ class AuthenticationApi
     }
 
     /**
-     * Create request for operation 'getAuthenticationItem'
+     * Create request for operation 'getFacetOptionItem'
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAuthenticationItemRequest($id)
+    protected function getFacetOptionItemRequest($id)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getAuthenticationItem'
+                'Missing the required parameter $id when calling getFacetOptionItem'
             );
         }
 
-        $resourcePath = '/authentications/{id}';
+        $resourcePath = '/facet_options/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

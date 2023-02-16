@@ -1,6 +1,6 @@
 <?php
 /**
- * AuthenticationApi
+ * ProductFacetOptionApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Gally\Rest\HeaderSelector;
 use Gally\Rest\ObjectSerializer;
 
 /**
- * AuthenticationApi Class Doc Comment
+ * ProductFacetOptionApi Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AuthenticationApi
+class ProductFacetOptionApi
 {
     /**
      * @var ClientInterface
@@ -88,9 +88,9 @@ class AuthenticationApi
     }
 
     /**
-     * Operation getAuthenticationItem
+     * Operation getProductFacetOptionItem
      *
-     * Retrieves a Authentication resource.
+     * Retrieves a ProductFacetOption resource.
      *
      * @param  string $id id (required)
      *
@@ -98,15 +98,15 @@ class AuthenticationApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function getAuthenticationItem($id)
+    public function getProductFacetOptionItem($id)
     {
-        $this->getAuthenticationItemWithHttpInfo($id);
+        $this->getProductFacetOptionItemWithHttpInfo($id);
     }
 
     /**
-     * Operation getAuthenticationItemWithHttpInfo
+     * Operation getProductFacetOptionItemWithHttpInfo
      *
-     * Retrieves a Authentication resource.
+     * Retrieves a ProductFacetOption resource.
      *
      * @param  string $id (required)
      *
@@ -114,10 +114,10 @@ class AuthenticationApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuthenticationItemWithHttpInfo($id)
+    public function getProductFacetOptionItemWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->getAuthenticationItemRequest($id);
+        $request = $this->getProductFacetOptionItemRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -157,18 +157,18 @@ class AuthenticationApi
     }
 
     /**
-     * Operation getAuthenticationItemAsync
+     * Operation getProductFacetOptionItemAsync
      *
-     * Retrieves a Authentication resource.
+     * Retrieves a ProductFacetOption resource.
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuthenticationItemAsync($id)
+    public function getProductFacetOptionItemAsync($id)
     {
-        return $this->getAuthenticationItemAsyncWithHttpInfo($id)
+        return $this->getProductFacetOptionItemAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -177,19 +177,19 @@ class AuthenticationApi
     }
 
     /**
-     * Operation getAuthenticationItemAsyncWithHttpInfo
+     * Operation getProductFacetOptionItemAsyncWithHttpInfo
      *
-     * Retrieves a Authentication resource.
+     * Retrieves a ProductFacetOption resource.
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuthenticationItemAsyncWithHttpInfo($id)
+    public function getProductFacetOptionItemAsyncWithHttpInfo($id)
     {
         $returnType = '';
-        $request = $this->getAuthenticationItemRequest($id);
+        $request = $this->getProductFacetOptionItemRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -215,23 +215,23 @@ class AuthenticationApi
     }
 
     /**
-     * Create request for operation 'getAuthenticationItem'
+     * Create request for operation 'getProductFacetOptionItem'
      *
      * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getAuthenticationItemRequest($id)
+    protected function getProductFacetOptionItemRequest($id)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling getAuthenticationItem'
+                'Missing the required parameter $id when calling getProductFacetOptionItem'
             );
         }
 
-        $resourcePath = '/authentications/{id}';
+        $resourcePath = '/product_facet_options/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

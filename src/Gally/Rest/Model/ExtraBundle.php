@@ -1,6 +1,6 @@
 <?php
 /**
- * CategoryProductMerchandisingCategoryProductMerchandisingWrite
+ * ExtraBundle
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * CategoryProductMerchandisingCategoryProductMerchandisingWrite Class Doc Comment
+ * ExtraBundle Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements ModelInterface, ArrayAccess
+class ExtraBundle implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CategoryProductMerchandising-category_product_merchandising.write';
+    protected static $swaggerModelName = 'ExtraBundle';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,8 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'category' => 'string',
-        'productId' => 'int',
-        'catalog' => 'string',
-        'localizedCatalog' => 'string',
-        'position' => 'int'
+        'id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -72,11 +68,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
       */
     protected static $swaggerFormats = [
         'id' => null,
-        'category' => 'iri-reference',
-        'productId' => null,
-        'catalog' => 'iri-reference',
-        'localizedCatalog' => 'iri-reference',
-        'position' => null
+        'name' => null
     ];
 
     /**
@@ -107,11 +99,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'category' => 'category',
-        'productId' => 'productId',
-        'catalog' => 'catalog',
-        'localizedCatalog' => 'localizedCatalog',
-        'position' => 'position'
+        'name' => 'name'
     ];
 
     /**
@@ -121,11 +109,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      */
     protected static $setters = [
         'id' => 'setId',
-        'category' => 'setCategory',
-        'productId' => 'setProductId',
-        'catalog' => 'setCatalog',
-        'localizedCatalog' => 'setLocalizedCatalog',
-        'position' => 'setPosition'
+        'name' => 'setName'
     ];
 
     /**
@@ -135,11 +119,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
      */
     protected static $getters = [
         'id' => 'getId',
-        'category' => 'getCategory',
-        'productId' => 'getProductId',
-        'catalog' => 'getCatalog',
-        'localizedCatalog' => 'getLocalizedCatalog',
-        'position' => 'getPosition'
+        'name' => 'getName'
     ];
 
     /**
@@ -203,11 +183,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
-        $this->container['productId'] = isset($data['productId']) ? $data['productId'] : null;
-        $this->container['catalog'] = isset($data['catalog']) ? $data['catalog'] : null;
-        $this->container['localizedCatalog'] = isset($data['localizedCatalog']) ? $data['localizedCatalog'] : null;
-        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
 
     /**
@@ -237,7 +213,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -247,7 +223,7 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     /**
      * Sets id
      *
-     * @param int $id id
+     * @param string $id id
      *
      * @return $this
      */
@@ -259,121 +235,25 @@ class CategoryProductMerchandisingCategoryProductMerchandisingWrite implements M
     }
 
     /**
-     * Gets category
+     * Gets name
      *
      * @return string
      */
-    public function getCategory()
+    public function getName()
     {
-        return $this->container['category'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets category
+     * Sets name
      *
-     * @param string $category category
+     * @param string $name name
      *
      * @return $this
      */
-    public function setCategory($category)
+    public function setName($name)
     {
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets productId
-     *
-     * @return int
-     */
-    public function getProductId()
-    {
-        return $this->container['productId'];
-    }
-
-    /**
-     * Sets productId
-     *
-     * @param int $productId productId
-     *
-     * @return $this
-     */
-    public function setProductId($productId)
-    {
-        $this->container['productId'] = $productId;
-
-        return $this;
-    }
-
-    /**
-     * Gets catalog
-     *
-     * @return string
-     */
-    public function getCatalog()
-    {
-        return $this->container['catalog'];
-    }
-
-    /**
-     * Sets catalog
-     *
-     * @param string $catalog catalog
-     *
-     * @return $this
-     */
-    public function setCatalog($catalog)
-    {
-        $this->container['catalog'] = $catalog;
-
-        return $this;
-    }
-
-    /**
-     * Gets localizedCatalog
-     *
-     * @return string
-     */
-    public function getLocalizedCatalog()
-    {
-        return $this->container['localizedCatalog'];
-    }
-
-    /**
-     * Sets localizedCatalog
-     *
-     * @param string $localizedCatalog localizedCatalog
-     *
-     * @return $this
-     */
-    public function setLocalizedCatalog($localizedCatalog)
-    {
-        $this->container['localizedCatalog'] = $localizedCatalog;
-
-        return $this;
-    }
-
-    /**
-     * Gets position
-     *
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param int $position position
-     *
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
+        $this->container['name'] = $name;
 
         return $this;
     }
