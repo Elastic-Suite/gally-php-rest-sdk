@@ -331,6 +331,8 @@ class SourceFieldOptionLabelApi
      *
      * @param  string $localizedCatalog localizedCatalog (optional)
      * @param  string[] $localizedCatalog2 localizedCatalog2 (optional)
+     * @param  string $sourceFieldOption sourceFieldOption (optional)
+     * @param  string[] $sourceFieldOption2 sourceFieldOption2 (optional)
      * @param  string $sourceFieldOptionSourceField sourceFieldOptionSourceField (optional)
      * @param  string[] $sourceFieldOptionSourceField2 sourceFieldOptionSourceField2 (optional)
      * @param  string $orderSourceFieldOptionPosition orderSourceFieldOptionPosition (optional)
@@ -342,9 +344,9 @@ class SourceFieldOptionLabelApi
      * @throws \InvalidArgumentException
      * @return \Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionLabelRead[]
      */
-    public function getSourceFieldOptionLabelCollection($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
+    public function getSourceFieldOptionLabelCollection($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOption = null, $sourceFieldOption2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
-        list($response) = $this->getSourceFieldOptionLabelCollectionWithHttpInfo($localizedCatalog, $localizedCatalog2, $sourceFieldOptionSourceField, $sourceFieldOptionSourceField2, $orderSourceFieldOptionPosition, $currentPage, $pageSize, $pagination);
+        list($response) = $this->getSourceFieldOptionLabelCollectionWithHttpInfo($localizedCatalog, $localizedCatalog2, $sourceFieldOption, $sourceFieldOption2, $sourceFieldOptionSourceField, $sourceFieldOptionSourceField2, $orderSourceFieldOptionPosition, $currentPage, $pageSize, $pagination);
         return $response;
     }
 
@@ -355,6 +357,8 @@ class SourceFieldOptionLabelApi
      *
      * @param  string $localizedCatalog (optional)
      * @param  string[] $localizedCatalog2 (optional)
+     * @param  string $sourceFieldOption (optional)
+     * @param  string[] $sourceFieldOption2 (optional)
      * @param  string $sourceFieldOptionSourceField (optional)
      * @param  string[] $sourceFieldOptionSourceField2 (optional)
      * @param  string $orderSourceFieldOptionPosition (optional)
@@ -366,10 +370,10 @@ class SourceFieldOptionLabelApi
      * @throws \InvalidArgumentException
      * @return array of \Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionLabelRead[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSourceFieldOptionLabelCollectionWithHttpInfo($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
+    public function getSourceFieldOptionLabelCollectionWithHttpInfo($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOption = null, $sourceFieldOption2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
         $returnType = '\Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionLabelRead[]';
-        $request = $this->getSourceFieldOptionLabelCollectionRequest($localizedCatalog, $localizedCatalog2, $sourceFieldOptionSourceField, $sourceFieldOptionSourceField2, $orderSourceFieldOptionPosition, $currentPage, $pageSize, $pagination);
+        $request = $this->getSourceFieldOptionLabelCollectionRequest($localizedCatalog, $localizedCatalog2, $sourceFieldOption, $sourceFieldOption2, $sourceFieldOptionSourceField, $sourceFieldOptionSourceField2, $orderSourceFieldOptionPosition, $currentPage, $pageSize, $pagination);
 
         try {
             $options = $this->createHttpClientOption();
@@ -437,6 +441,8 @@ class SourceFieldOptionLabelApi
      *
      * @param  string $localizedCatalog (optional)
      * @param  string[] $localizedCatalog2 (optional)
+     * @param  string $sourceFieldOption (optional)
+     * @param  string[] $sourceFieldOption2 (optional)
      * @param  string $sourceFieldOptionSourceField (optional)
      * @param  string[] $sourceFieldOptionSourceField2 (optional)
      * @param  string $orderSourceFieldOptionPosition (optional)
@@ -447,9 +453,9 @@ class SourceFieldOptionLabelApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSourceFieldOptionLabelCollectionAsync($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
+    public function getSourceFieldOptionLabelCollectionAsync($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOption = null, $sourceFieldOption2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
-        return $this->getSourceFieldOptionLabelCollectionAsyncWithHttpInfo($localizedCatalog, $localizedCatalog2, $sourceFieldOptionSourceField, $sourceFieldOptionSourceField2, $orderSourceFieldOptionPosition, $currentPage, $pageSize, $pagination)
+        return $this->getSourceFieldOptionLabelCollectionAsyncWithHttpInfo($localizedCatalog, $localizedCatalog2, $sourceFieldOption, $sourceFieldOption2, $sourceFieldOptionSourceField, $sourceFieldOptionSourceField2, $orderSourceFieldOptionPosition, $currentPage, $pageSize, $pagination)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -464,6 +470,8 @@ class SourceFieldOptionLabelApi
      *
      * @param  string $localizedCatalog (optional)
      * @param  string[] $localizedCatalog2 (optional)
+     * @param  string $sourceFieldOption (optional)
+     * @param  string[] $sourceFieldOption2 (optional)
      * @param  string $sourceFieldOptionSourceField (optional)
      * @param  string[] $sourceFieldOptionSourceField2 (optional)
      * @param  string $orderSourceFieldOptionPosition (optional)
@@ -474,10 +482,10 @@ class SourceFieldOptionLabelApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSourceFieldOptionLabelCollectionAsyncWithHttpInfo($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
+    public function getSourceFieldOptionLabelCollectionAsyncWithHttpInfo($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOption = null, $sourceFieldOption2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
         $returnType = '\Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionLabelRead[]';
-        $request = $this->getSourceFieldOptionLabelCollectionRequest($localizedCatalog, $localizedCatalog2, $sourceFieldOptionSourceField, $sourceFieldOptionSourceField2, $orderSourceFieldOptionPosition, $currentPage, $pageSize, $pagination);
+        $request = $this->getSourceFieldOptionLabelCollectionRequest($localizedCatalog, $localizedCatalog2, $sourceFieldOption, $sourceFieldOption2, $sourceFieldOptionSourceField, $sourceFieldOptionSourceField2, $orderSourceFieldOptionPosition, $currentPage, $pageSize, $pagination);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -521,6 +529,8 @@ class SourceFieldOptionLabelApi
      *
      * @param  string $localizedCatalog (optional)
      * @param  string[] $localizedCatalog2 (optional)
+     * @param  string $sourceFieldOption (optional)
+     * @param  string[] $sourceFieldOption2 (optional)
      * @param  string $sourceFieldOptionSourceField (optional)
      * @param  string[] $sourceFieldOptionSourceField2 (optional)
      * @param  string $orderSourceFieldOptionPosition (optional)
@@ -531,7 +541,7 @@ class SourceFieldOptionLabelApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getSourceFieldOptionLabelCollectionRequest($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
+    protected function getSourceFieldOptionLabelCollectionRequest($localizedCatalog = null, $localizedCatalog2 = null, $sourceFieldOption = null, $sourceFieldOption2 = null, $sourceFieldOptionSourceField = null, $sourceFieldOptionSourceField2 = null, $orderSourceFieldOptionPosition = null, $currentPage = null, $pageSize = null, $pagination = null)
     {
 
         $resourcePath = '/source_field_option_labels';
@@ -551,6 +561,17 @@ class SourceFieldOptionLabelApi
         } else
         if ($localizedCatalog2 !== null) {
             $queryParams['localizedCatalog[]'] = ObjectSerializer::toQueryValue($localizedCatalog2);
+        }
+        // query params
+        if ($sourceFieldOption !== null) {
+            $queryParams['sourceFieldOption'] = ObjectSerializer::toQueryValue($sourceFieldOption);
+        }
+        // query params
+        if (is_array($sourceFieldOption2)) {
+            $queryParams['sourceFieldOption[]'] = $sourceFieldOption2;
+        } else
+        if ($sourceFieldOption2 !== null) {
+            $queryParams['sourceFieldOption[]'] = ObjectSerializer::toQueryValue($sourceFieldOption2);
         }
         // query params
         if ($sourceFieldOptionSourceField !== null) {
