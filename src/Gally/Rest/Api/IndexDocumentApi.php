@@ -593,14 +593,15 @@ class IndexDocumentApi
      * Removes the IndexDocument resource.
      *
      * @param  string $indexName indexName (required)
+     * @param  array $documentIds document ids (required)  /!\ Manually added params
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function removeIndexDocumentItem($indexName)
+    public function removeIndexDocumentItem($indexName, $documentIds)
     {
-        $this->removeIndexDocumentItemWithHttpInfo($indexName);
+        $this->removeIndexDocumentItemWithHttpInfo($indexName, $documentIds);
     }
 
     /**
@@ -609,15 +610,16 @@ class IndexDocumentApi
      * Removes the IndexDocument resource.
      *
      * @param  string $indexName (required)
+     * @param  array $documentIds document ids (required)  /!\ Manually added params
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removeIndexDocumentItemWithHttpInfo($indexName)
+    public function removeIndexDocumentItemWithHttpInfo($indexName, $documentIds)
     {
         $returnType = '';
-        $request = $this->removeIndexDocumentItemRequest($indexName);
+        $request = $this->removeIndexDocumentItemRequest($indexName, $documentIds);
 
         try {
             $options = $this->createHttpClientOption();
@@ -662,13 +664,14 @@ class IndexDocumentApi
      * Removes the IndexDocument resource.
      *
      * @param  string $indexName (required)
+     * @param  array $documentIds document ids (required)  /!\ Manually added params
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeIndexDocumentItemAsync($indexName)
+    public function removeIndexDocumentItemAsync($indexName, $documentIds)
     {
-        return $this->removeIndexDocumentItemAsyncWithHttpInfo($indexName)
+        return $this->removeIndexDocumentItemAsyncWithHttpInfo($indexName, $documentIds)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -682,14 +685,15 @@ class IndexDocumentApi
      * Removes the IndexDocument resource.
      *
      * @param  string $indexName (required)
+     * @param  array $documentIds document ids (required)  /!\ Manually added params
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeIndexDocumentItemAsyncWithHttpInfo($indexName)
+    public function removeIndexDocumentItemAsyncWithHttpInfo($indexName, $documentIds)
     {
         $returnType = '';
-        $request = $this->removeIndexDocumentItemRequest($indexName);
+        $request = $this->removeIndexDocumentItemRequest($indexName, $documentIds);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -718,11 +722,12 @@ class IndexDocumentApi
      * Create request for operation 'removeIndexDocumentItem'
      *
      * @param  string $indexName (required)
+     * @param  array $documentIds document ids (required)  /!\ Manually added params
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function removeIndexDocumentItemRequest($indexName)
+    protected function removeIndexDocumentItemRequest($indexName, $documentIds)
     {
         // verify the required parameter 'indexName' is set
         if ($indexName === null || (is_array($indexName) && count($indexName) === 0)) {
@@ -750,6 +755,10 @@ class IndexDocumentApi
 
         // body params
         $_tempBody = null;
+        if (isset($documentIds)) {
+            $_tempBody = $documentIds;
+        }
+
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
