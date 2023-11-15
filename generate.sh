@@ -7,3 +7,7 @@ java -jar swagger-codegen-cli-2.4.30.jar generate \
 	-l php \
 	-o ./test/ \
 	-c swagger-codegen.config.json
+
+rm -rf src/Gally/Rest
+mv test/gally-php/src/Rest src/Gally/
+rm -rf test/

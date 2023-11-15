@@ -1,6 +1,6 @@
 <?php
 /**
- * SourceFieldOptionSourceFieldOptionWrite
+ * SourceFieldSourceFieldRead
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * SourceFieldOptionSourceFieldOptionWrite Class Doc Comment
+ * SourceFieldSourceFieldRead Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAccess
+class SourceFieldSourceFieldRead implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $swaggerModelName = 'SourceFieldOption-source_field_option.write';
+    protected static $swaggerModelName = 'SourceField-source_field.read';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,18 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     protected static $swaggerTypes = [
         'id' => 'int',
         'code' => 'string',
-        'sourceField' => 'string',
-        'position' => 'int',
         'defaultLabel' => 'string',
-        'labels' => '\Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionWrite[]'
+        'type' => 'string',
+        'isFilterable' => 'bool',
+        'isSearchable' => 'bool',
+        'isSortable' => 'bool',
+        'isUsedForRules' => 'bool',
+        'weight' => 'int',
+        'isSpellchecked' => 'bool',
+        'isSystem' => 'bool',
+        'metadata' => 'string',
+        'labels' => '\Gally\Rest\Model\SourceFieldLabelSourceFieldRead[]',
+        'options' => 'string[]'
     ];
 
     /**
@@ -73,10 +81,18 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     protected static $swaggerFormats = [
         'id' => null,
         'code' => null,
-        'sourceField' => 'iri-reference',
-        'position' => null,
         'defaultLabel' => null,
-        'labels' => null
+        'type' => null,
+        'isFilterable' => null,
+        'isSearchable' => null,
+        'isSortable' => null,
+        'isUsedForRules' => null,
+        'weight' => null,
+        'isSpellchecked' => null,
+        'isSystem' => null,
+        'metadata' => 'iri-reference',
+        'labels' => null,
+        'options' => 'iri-reference'
     ];
 
     /**
@@ -108,10 +124,18 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     protected static $attributeMap = [
         'id' => 'id',
         'code' => 'code',
-        'sourceField' => 'sourceField',
-        'position' => 'position',
         'defaultLabel' => 'defaultLabel',
-        'labels' => 'labels'
+        'type' => 'type',
+        'isFilterable' => 'isFilterable',
+        'isSearchable' => 'isSearchable',
+        'isSortable' => 'isSortable',
+        'isUsedForRules' => 'isUsedForRules',
+        'weight' => 'weight',
+        'isSpellchecked' => 'isSpellchecked',
+        'isSystem' => 'isSystem',
+        'metadata' => 'metadata',
+        'labels' => 'labels',
+        'options' => 'options'
     ];
 
     /**
@@ -122,10 +146,18 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     protected static $setters = [
         'id' => 'setId',
         'code' => 'setCode',
-        'sourceField' => 'setSourceField',
-        'position' => 'setPosition',
         'defaultLabel' => 'setDefaultLabel',
-        'labels' => 'setLabels'
+        'type' => 'setType',
+        'isFilterable' => 'setIsFilterable',
+        'isSearchable' => 'setIsSearchable',
+        'isSortable' => 'setIsSortable',
+        'isUsedForRules' => 'setIsUsedForRules',
+        'weight' => 'setWeight',
+        'isSpellchecked' => 'setIsSpellchecked',
+        'isSystem' => 'setIsSystem',
+        'metadata' => 'setMetadata',
+        'labels' => 'setLabels',
+        'options' => 'setOptions'
     ];
 
     /**
@@ -136,10 +168,18 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     protected static $getters = [
         'id' => 'getId',
         'code' => 'getCode',
-        'sourceField' => 'getSourceField',
-        'position' => 'getPosition',
         'defaultLabel' => 'getDefaultLabel',
-        'labels' => 'getLabels'
+        'type' => 'getType',
+        'isFilterable' => 'getIsFilterable',
+        'isSearchable' => 'getIsSearchable',
+        'isSortable' => 'getIsSortable',
+        'isUsedForRules' => 'getIsUsedForRules',
+        'weight' => 'getWeight',
+        'isSpellchecked' => 'getIsSpellchecked',
+        'isSystem' => 'getIsSystem',
+        'metadata' => 'getMetadata',
+        'labels' => 'getLabels',
+        'options' => 'getOptions'
     ];
 
     /**
@@ -204,10 +244,18 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['sourceField'] = isset($data['sourceField']) ? $data['sourceField'] : null;
-        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
         $this->container['defaultLabel'] = isset($data['defaultLabel']) ? $data['defaultLabel'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['isFilterable'] = isset($data['isFilterable']) ? $data['isFilterable'] : null;
+        $this->container['isSearchable'] = isset($data['isSearchable']) ? $data['isSearchable'] : null;
+        $this->container['isSortable'] = isset($data['isSortable']) ? $data['isSortable'] : null;
+        $this->container['isUsedForRules'] = isset($data['isUsedForRules']) ? $data['isUsedForRules'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        $this->container['isSpellchecked'] = isset($data['isSpellchecked']) ? $data['isSpellchecked'] : null;
+        $this->container['isSystem'] = isset($data['isSystem']) ? $data['isSystem'] : null;
+        $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
         $this->container['labels'] = isset($data['labels']) ? $data['labels'] : null;
+        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
     }
 
     /**
@@ -222,11 +270,8 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
         if ($this->container['code'] === null) {
             $invalidProperties[] = "'code' can't be null";
         }
-        if ($this->container['sourceField'] === null) {
-            $invalidProperties[] = "'sourceField' can't be null";
-        }
-        if ($this->container['defaultLabel'] === null) {
-            $invalidProperties[] = "'defaultLabel' can't be null";
+        if ($this->container['metadata'] === null) {
+            $invalidProperties[] = "'metadata' can't be null";
         }
         return $invalidProperties;
     }
@@ -292,54 +337,6 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     }
 
     /**
-     * Gets sourceField
-     *
-     * @return string
-     */
-    public function getSourceField()
-    {
-        return $this->container['sourceField'];
-    }
-
-    /**
-     * Sets sourceField
-     *
-     * @param string $sourceField sourceField
-     *
-     * @return $this
-     */
-    public function setSourceField($sourceField)
-    {
-        $this->container['sourceField'] = $sourceField;
-
-        return $this;
-    }
-
-    /**
-     * Gets position
-     *
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param int $position position
-     *
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
-
-        return $this;
-    }
-
-    /**
      * Gets defaultLabel
      *
      * @return string
@@ -364,9 +361,225 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     }
 
     /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets isFilterable
+     *
+     * @return bool
+     */
+    public function getIsFilterable()
+    {
+        return $this->container['isFilterable'];
+    }
+
+    /**
+     * Sets isFilterable
+     *
+     * @param bool $isFilterable isFilterable
+     *
+     * @return $this
+     */
+    public function setIsFilterable($isFilterable)
+    {
+        $this->container['isFilterable'] = $isFilterable;
+
+        return $this;
+    }
+
+    /**
+     * Gets isSearchable
+     *
+     * @return bool
+     */
+    public function getIsSearchable()
+    {
+        return $this->container['isSearchable'];
+    }
+
+    /**
+     * Sets isSearchable
+     *
+     * @param bool $isSearchable isSearchable
+     *
+     * @return $this
+     */
+    public function setIsSearchable($isSearchable)
+    {
+        $this->container['isSearchable'] = $isSearchable;
+
+        return $this;
+    }
+
+    /**
+     * Gets isSortable
+     *
+     * @return bool
+     */
+    public function getIsSortable()
+    {
+        return $this->container['isSortable'];
+    }
+
+    /**
+     * Sets isSortable
+     *
+     * @param bool $isSortable isSortable
+     *
+     * @return $this
+     */
+    public function setIsSortable($isSortable)
+    {
+        $this->container['isSortable'] = $isSortable;
+
+        return $this;
+    }
+
+    /**
+     * Gets isUsedForRules
+     *
+     * @return bool
+     */
+    public function getIsUsedForRules()
+    {
+        return $this->container['isUsedForRules'];
+    }
+
+    /**
+     * Sets isUsedForRules
+     *
+     * @param bool $isUsedForRules isUsedForRules
+     *
+     * @return $this
+     */
+    public function setIsUsedForRules($isUsedForRules)
+    {
+        $this->container['isUsedForRules'] = $isUsedForRules;
+
+        return $this;
+    }
+
+    /**
+     * Gets weight
+     *
+     * @return int
+     */
+    public function getWeight()
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * Sets weight
+     *
+     * @param int $weight weight
+     *
+     * @return $this
+     */
+    public function setWeight($weight)
+    {
+        $this->container['weight'] = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Gets isSpellchecked
+     *
+     * @return bool
+     */
+    public function getIsSpellchecked()
+    {
+        return $this->container['isSpellchecked'];
+    }
+
+    /**
+     * Sets isSpellchecked
+     *
+     * @param bool $isSpellchecked isSpellchecked
+     *
+     * @return $this
+     */
+    public function setIsSpellchecked($isSpellchecked)
+    {
+        $this->container['isSpellchecked'] = $isSpellchecked;
+
+        return $this;
+    }
+
+    /**
+     * Gets isSystem
+     *
+     * @return bool
+     */
+    public function getIsSystem()
+    {
+        return $this->container['isSystem'];
+    }
+
+    /**
+     * Sets isSystem
+     *
+     * @param bool $isSystem isSystem
+     *
+     * @return $this
+     */
+    public function setIsSystem($isSystem)
+    {
+        $this->container['isSystem'] = $isSystem;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return string
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param string $metadata metadata
+     *
+     * @return $this
+     */
+    public function setMetadata($metadata)
+    {
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
      * Gets labels
      *
-     * @return \Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionWrite[]
+     * @return \Gally\Rest\Model\SourceFieldLabelSourceFieldRead[]
      */
     public function getLabels()
     {
@@ -376,13 +589,37 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     /**
      * Sets labels
      *
-     * @param \Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionWrite[] $labels labels
+     * @param \Gally\Rest\Model\SourceFieldLabelSourceFieldRead[] $labels labels
      *
      * @return $this
      */
     public function setLabels($labels)
     {
         $this->container['labels'] = $labels;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return string[]
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param string[] $options options
+     *
+     * @return $this
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * SourceFieldOptionSourceFieldOptionWrite
+ * SourceFieldLabelSourceFieldRead
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * SourceFieldOptionSourceFieldOptionWrite Class Doc Comment
+ * SourceFieldLabelSourceFieldRead Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAccess
+class SourceFieldLabelSourceFieldRead implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $swaggerModelName = 'SourceFieldOption-source_field_option.write';
+    protected static $swaggerModelName = 'SourceFieldLabel-source_field.read';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,8 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'code' => 'string',
-        'sourceField' => 'string',
-        'position' => 'int',
-        'defaultLabel' => 'string',
-        'labels' => '\Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionWrite[]'
+        'localizedCatalog' => 'string',
+        'label' => 'string'
     ];
 
     /**
@@ -71,12 +67,8 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
-        'code' => null,
-        'sourceField' => 'iri-reference',
-        'position' => null,
-        'defaultLabel' => null,
-        'labels' => null
+        'localizedCatalog' => 'iri-reference',
+        'label' => null
     ];
 
     /**
@@ -106,12 +98,8 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'code' => 'code',
-        'sourceField' => 'sourceField',
-        'position' => 'position',
-        'defaultLabel' => 'defaultLabel',
-        'labels' => 'labels'
+        'localizedCatalog' => 'localizedCatalog',
+        'label' => 'label'
     ];
 
     /**
@@ -120,12 +108,8 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'code' => 'setCode',
-        'sourceField' => 'setSourceField',
-        'position' => 'setPosition',
-        'defaultLabel' => 'setDefaultLabel',
-        'labels' => 'setLabels'
+        'localizedCatalog' => 'setLocalizedCatalog',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -134,12 +118,8 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'code' => 'getCode',
-        'sourceField' => 'getSourceField',
-        'position' => 'getPosition',
-        'defaultLabel' => 'getDefaultLabel',
-        'labels' => 'getLabels'
+        'localizedCatalog' => 'getLocalizedCatalog',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -202,12 +182,8 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['sourceField'] = isset($data['sourceField']) ? $data['sourceField'] : null;
-        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
-        $this->container['defaultLabel'] = isset($data['defaultLabel']) ? $data['defaultLabel'] : null;
-        $this->container['labels'] = isset($data['labels']) ? $data['labels'] : null;
+        $this->container['localizedCatalog'] = isset($data['localizedCatalog']) ? $data['localizedCatalog'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
     }
 
     /**
@@ -219,14 +195,11 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        if ($this->container['localizedCatalog'] === null) {
+            $invalidProperties[] = "'localizedCatalog' can't be null";
         }
-        if ($this->container['sourceField'] === null) {
-            $invalidProperties[] = "'sourceField' can't be null";
-        }
-        if ($this->container['defaultLabel'] === null) {
-            $invalidProperties[] = "'defaultLabel' can't be null";
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         return $invalidProperties;
     }
@@ -244,145 +217,49 @@ class SourceFieldOptionSourceFieldOptionWrite implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
+     * Gets localizedCatalog
      *
      * @return string
      */
-    public function getCode()
+    public function getLocalizedCatalog()
     {
-        return $this->container['code'];
+        return $this->container['localizedCatalog'];
     }
 
     /**
-     * Sets code
+     * Sets localizedCatalog
      *
-     * @param string $code code
+     * @param string $localizedCatalog localizedCatalog
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setLocalizedCatalog($localizedCatalog)
     {
-        $this->container['code'] = $code;
+        $this->container['localizedCatalog'] = $localizedCatalog;
 
         return $this;
     }
 
     /**
-     * Gets sourceField
+     * Gets label
      *
      * @return string
      */
-    public function getSourceField()
+    public function getLabel()
     {
-        return $this->container['sourceField'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets sourceField
+     * Sets label
      *
-     * @param string $sourceField sourceField
+     * @param string $label label
      *
      * @return $this
      */
-    public function setSourceField($sourceField)
+    public function setLabel($label)
     {
-        $this->container['sourceField'] = $sourceField;
-
-        return $this;
-    }
-
-    /**
-     * Gets position
-     *
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param int $position position
-     *
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
-
-        return $this;
-    }
-
-    /**
-     * Gets defaultLabel
-     *
-     * @return string
-     */
-    public function getDefaultLabel()
-    {
-        return $this->container['defaultLabel'];
-    }
-
-    /**
-     * Sets defaultLabel
-     *
-     * @param string $defaultLabel defaultLabel
-     *
-     * @return $this
-     */
-    public function setDefaultLabel($defaultLabel)
-    {
-        $this->container['defaultLabel'] = $defaultLabel;
-
-        return $this;
-    }
-
-    /**
-     * Gets labels
-     *
-     * @return \Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionWrite[]
-     */
-    public function getLabels()
-    {
-        return $this->container['labels'];
-    }
-
-    /**
-     * Sets labels
-     *
-     * @param \Gally\Rest\Model\SourceFieldOptionLabelSourceFieldOptionWrite[] $labels labels
-     *
-     * @return $this
-     */
-    public function setLabels($labels)
-    {
-        $this->container['labels'] = $labels;
+        $this->container['label'] = $label;
 
         return $this;
     }

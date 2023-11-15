@@ -1,6 +1,6 @@
 <?php
 /**
- * SourceFieldSourceFieldApi
+ * SourceFieldSourceFieldWrite
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * SourceFieldSourceFieldApi Class Doc Comment
+ * SourceFieldSourceFieldWrite Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
+class SourceFieldSourceFieldWrite implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'SourceField-source_field.api';
+    protected static $swaggerModelName = 'SourceField-source_field.write';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,6 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
         'code' => 'string',
         'defaultLabel' => 'string',
         'type' => 'string',
@@ -69,8 +68,7 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
         'isSpellchecked' => 'bool',
         'isSystem' => 'bool',
         'metadata' => 'string',
-        'labels' => 'string[]',
-        'options' => 'string[]'
+        'labels' => '\Gally\Rest\Model\SourceFieldLabelSourceFieldWrite[]'
     ];
 
     /**
@@ -79,7 +77,6 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
         'code' => null,
         'defaultLabel' => null,
         'type' => null,
@@ -91,8 +88,7 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
         'isSpellchecked' => null,
         'isSystem' => null,
         'metadata' => 'iri-reference',
-        'labels' => 'iri-reference',
-        'options' => 'iri-reference'
+        'labels' => null
     ];
 
     /**
@@ -122,7 +118,6 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'code' => 'code',
         'defaultLabel' => 'defaultLabel',
         'type' => 'type',
@@ -134,8 +129,7 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
         'isSpellchecked' => 'isSpellchecked',
         'isSystem' => 'isSystem',
         'metadata' => 'metadata',
-        'labels' => 'labels',
-        'options' => 'options'
+        'labels' => 'labels'
     ];
 
     /**
@@ -144,7 +138,6 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'code' => 'setCode',
         'defaultLabel' => 'setDefaultLabel',
         'type' => 'setType',
@@ -156,8 +149,7 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
         'isSpellchecked' => 'setIsSpellchecked',
         'isSystem' => 'setIsSystem',
         'metadata' => 'setMetadata',
-        'labels' => 'setLabels',
-        'options' => 'setOptions'
+        'labels' => 'setLabels'
     ];
 
     /**
@@ -166,7 +158,6 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'code' => 'getCode',
         'defaultLabel' => 'getDefaultLabel',
         'type' => 'getType',
@@ -178,8 +169,7 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
         'isSpellchecked' => 'getIsSpellchecked',
         'isSystem' => 'getIsSystem',
         'metadata' => 'getMetadata',
-        'labels' => 'getLabels',
-        'options' => 'getOptions'
+        'labels' => 'getLabels'
     ];
 
     /**
@@ -242,7 +232,6 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['defaultLabel'] = isset($data['defaultLabel']) ? $data['defaultLabel'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
@@ -255,7 +244,6 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
         $this->container['isSystem'] = isset($data['isSystem']) ? $data['isSystem'] : null;
         $this->container['metadata'] = isset($data['metadata']) ? $data['metadata'] : null;
         $this->container['labels'] = isset($data['labels']) ? $data['labels'] : null;
-        $this->container['options'] = isset($data['options']) ? $data['options'] : null;
     }
 
     /**
@@ -287,30 +275,6 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets code
@@ -579,7 +543,7 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
     /**
      * Gets labels
      *
-     * @return string[]
+     * @return \Gally\Rest\Model\SourceFieldLabelSourceFieldWrite[]
      */
     public function getLabels()
     {
@@ -589,37 +553,13 @@ class SourceFieldSourceFieldApi implements ModelInterface, ArrayAccess
     /**
      * Sets labels
      *
-     * @param string[] $labels labels
+     * @param \Gally\Rest\Model\SourceFieldLabelSourceFieldWrite[] $labels labels
      *
      * @return $this
      */
     public function setLabels($labels)
     {
         $this->container['labels'] = $labels;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return string[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param string[] $options options
-     *
-     * @return $this
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
 
         return $this;
     }
