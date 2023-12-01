@@ -1,6 +1,6 @@
 <?php
 /**
- * CategorySortingOption
+ * ThesaurusLocaleThesaurusWrite
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * CategorySortingOption Class Doc Comment
+ * ThesaurusLocaleThesaurusWrite Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CategorySortingOption implements ModelInterface, ArrayAccess
+class ThesaurusLocaleThesaurusWrite implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CategorySortingOption';
+    protected static $swaggerModelName = 'ThesaurusLocale-thesaurus.write';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'code' => 'string',
-        'label' => 'string'
+        'locale' => 'string'
     ];
 
     /**
@@ -67,8 +66,7 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'code' => null,
-        'label' => null
+        'locale' => null
     ];
 
     /**
@@ -98,8 +96,7 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'label' => 'label'
+        'locale' => 'locale'
     ];
 
     /**
@@ -108,8 +105,7 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'label' => 'setLabel'
+        'locale' => 'setLocale'
     ];
 
     /**
@@ -118,8 +114,7 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'label' => 'getLabel'
+        'locale' => 'getLocale'
     ];
 
     /**
@@ -182,8 +177,7 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
     }
 
     /**
@@ -195,6 +189,9 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['locale'] === null) {
+            $invalidProperties[] = "'locale' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -211,49 +208,25 @@ class CategorySortingOption implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets locale
      *
      * @return string
      */
-    public function getCode()
+    public function getLocale()
     {
-        return $this->container['code'];
+        return $this->container['locale'];
     }
 
     /**
-     * Sets code
+     * Sets locale
      *
-     * @param string $code code
+     * @param string $locale locale
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setLocale($locale)
     {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label label
-     *
-     * @return $this
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
+        $this->container['locale'] = $locale;
 
         return $this;
     }

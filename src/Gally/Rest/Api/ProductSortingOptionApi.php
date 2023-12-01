@@ -1,6 +1,6 @@
 <?php
 /**
- * CategorySortingOptionApi
+ * ProductSortingOptionApi
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Gally\Rest\HeaderSelector;
 use Gally\Rest\ObjectSerializer;
 
 /**
- * CategorySortingOptionApi Class Doc Comment
+ * ProductSortingOptionApi Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CategorySortingOptionApi
+class ProductSortingOptionApi
 {
     /**
      * @var ClientInterface
@@ -88,37 +88,37 @@ class CategorySortingOptionApi
     }
 
     /**
-     * Operation getCategorySortingOptionCollection
+     * Operation getProductSortingOptionCollection
      *
-     * Retrieves the collection of CategorySortingOption resources.
+     * Retrieves the collection of ProductSortingOption resources.
      *
      * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gally\Rest\Model\CategorySortingOption[]
+     * @return \Gally\Rest\Model\ProductSortingOption[]
      */
-    public function getCategorySortingOptionCollection($pagination = null)
+    public function getProductSortingOptionCollection($pagination = null)
     {
-        list($response) = $this->getCategorySortingOptionCollectionWithHttpInfo($pagination);
+        list($response) = $this->getProductSortingOptionCollectionWithHttpInfo($pagination);
         return $response;
     }
 
     /**
-     * Operation getCategorySortingOptionCollectionWithHttpInfo
+     * Operation getProductSortingOptionCollectionWithHttpInfo
      *
-     * Retrieves the collection of CategorySortingOption resources.
+     * Retrieves the collection of ProductSortingOption resources.
      *
      * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gally\Rest\Model\CategorySortingOption[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gally\Rest\Model\ProductSortingOption[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCategorySortingOptionCollectionWithHttpInfo($pagination = null)
+    public function getProductSortingOptionCollectionWithHttpInfo($pagination = null)
     {
-        $returnType = '\Gally\Rest\Model\CategorySortingOption[]';
-        $request = $this->getCategorySortingOptionCollectionRequest($pagination);
+        $returnType = '\Gally\Rest\Model\ProductSortingOption[]';
+        $request = $this->getProductSortingOptionCollectionRequest($pagination);
 
         try {
             $options = $this->createHttpClientOption();
@@ -169,7 +169,7 @@ class CategorySortingOptionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gally\Rest\Model\CategorySortingOption[]',
+                        '\Gally\Rest\Model\ProductSortingOption[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -180,18 +180,18 @@ class CategorySortingOptionApi
     }
 
     /**
-     * Operation getCategorySortingOptionCollectionAsync
+     * Operation getProductSortingOptionCollectionAsync
      *
-     * Retrieves the collection of CategorySortingOption resources.
+     * Retrieves the collection of ProductSortingOption resources.
      *
      * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCategorySortingOptionCollectionAsync($pagination = null)
+    public function getProductSortingOptionCollectionAsync($pagination = null)
     {
-        return $this->getCategorySortingOptionCollectionAsyncWithHttpInfo($pagination)
+        return $this->getProductSortingOptionCollectionAsyncWithHttpInfo($pagination)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -200,19 +200,19 @@ class CategorySortingOptionApi
     }
 
     /**
-     * Operation getCategorySortingOptionCollectionAsyncWithHttpInfo
+     * Operation getProductSortingOptionCollectionAsyncWithHttpInfo
      *
-     * Retrieves the collection of CategorySortingOption resources.
+     * Retrieves the collection of ProductSortingOption resources.
      *
      * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCategorySortingOptionCollectionAsyncWithHttpInfo($pagination = null)
+    public function getProductSortingOptionCollectionAsyncWithHttpInfo($pagination = null)
     {
-        $returnType = '\Gally\Rest\Model\CategorySortingOption[]';
-        $request = $this->getCategorySortingOptionCollectionRequest($pagination);
+        $returnType = '\Gally\Rest\Model\ProductSortingOption[]';
+        $request = $this->getProductSortingOptionCollectionRequest($pagination);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -252,17 +252,17 @@ class CategorySortingOptionApi
     }
 
     /**
-     * Create request for operation 'getCategorySortingOptionCollection'
+     * Create request for operation 'getProductSortingOptionCollection'
      *
      * @param  bool $pagination Enable or disable pagination (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getCategorySortingOptionCollectionRequest($pagination = null)
+    protected function getProductSortingOptionCollectionRequest($pagination = null)
     {
 
-        $resourcePath = '/category_sorting_options';
+        $resourcePath = '/product_sorting_options';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
