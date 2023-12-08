@@ -335,7 +335,7 @@ class MetadataApi
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gally\Rest\Model\Metadata[]
+     * @return \Gally\Rest\Model\MetadataMetadataRead[]
      */
     public function getMetadataCollection($currentPage = null, $pageSize = null, $pagination = null)
     {
@@ -354,11 +354,11 @@ class MetadataApi
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gally\Rest\Model\Metadata[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gally\Rest\Model\MetadataMetadataRead[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getMetadataCollectionWithHttpInfo($currentPage = null, $pageSize = null, $pagination = null)
     {
-        $returnType = '\Gally\Rest\Model\Metadata[]';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead[]';
         $request = $this->getMetadataCollectionRequest($currentPage, $pageSize, $pagination);
 
         try {
@@ -410,7 +410,7 @@ class MetadataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gally\Rest\Model\Metadata[]',
+                        '\Gally\Rest\Model\MetadataMetadataRead[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -456,7 +456,7 @@ class MetadataApi
      */
     public function getMetadataCollectionAsyncWithHttpInfo($currentPage = null, $pageSize = null, $pagination = null)
     {
-        $returnType = '\Gally\Rest\Model\Metadata[]';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead[]';
         $request = $this->getMetadataCollectionRequest($currentPage, $pageSize, $pagination);
 
         return $this->client
@@ -615,7 +615,7 @@ class MetadataApi
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gally\Rest\Model\Metadata
+     * @return \Gally\Rest\Model\MetadataMetadataRead
      */
     public function getMetadataItem($id)
     {
@@ -632,11 +632,11 @@ class MetadataApi
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gally\Rest\Model\Metadata, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gally\Rest\Model\MetadataMetadataRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMetadataItemWithHttpInfo($id)
     {
-        $returnType = '\Gally\Rest\Model\Metadata';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead';
         $request = $this->getMetadataItemRequest($id);
 
         try {
@@ -688,7 +688,7 @@ class MetadataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gally\Rest\Model\Metadata',
+                        '\Gally\Rest\Model\MetadataMetadataRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -730,7 +730,7 @@ class MetadataApi
      */
     public function getMetadataItemAsyncWithHttpInfo($id)
     {
-        $returnType = '\Gally\Rest\Model\Metadata';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead';
         $request = $this->getMetadataItemRequest($id);
 
         return $this->client
@@ -886,11 +886,11 @@ class MetadataApi
      * Updates the Metadata resource.
      *
      * @param  string $id id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gally\Rest\Model\Metadata
+     * @return \Gally\Rest\Model\MetadataMetadataRead
      */
     public function patchMetadataItem($id, $metadata = null)
     {
@@ -904,15 +904,15 @@ class MetadataApi
      * Updates the Metadata resource.
      *
      * @param  string $id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gally\Rest\Model\Metadata, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gally\Rest\Model\MetadataMetadataRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function patchMetadataItemWithHttpInfo($id, $metadata = null)
     {
-        $returnType = '\Gally\Rest\Model\Metadata';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead';
         $request = $this->patchMetadataItemRequest($id, $metadata);
 
         try {
@@ -964,7 +964,7 @@ class MetadataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gally\Rest\Model\Metadata',
+                        '\Gally\Rest\Model\MetadataMetadataRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -980,7 +980,7 @@ class MetadataApi
      * Updates the Metadata resource.
      *
      * @param  string $id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1001,14 +1001,14 @@ class MetadataApi
      * Updates the Metadata resource.
      *
      * @param  string $id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function patchMetadataItemAsyncWithHttpInfo($id, $metadata = null)
     {
-        $returnType = '\Gally\Rest\Model\Metadata';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead';
         $request = $this->patchMetadataItemRequest($id, $metadata);
 
         return $this->client
@@ -1052,7 +1052,7 @@ class MetadataApi
      * Create request for operation 'patchMetadataItem'
      *
      * @param  string $id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1167,11 +1167,11 @@ class MetadataApi
      *
      * Creates a Metadata resource.
      *
-     * @param  \Gally\Rest\Model\Metadata $metadata The new Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The new Metadata resource (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gally\Rest\Model\Metadata
+     * @return \Gally\Rest\Model\MetadataMetadataRead
      */
     public function postMetadataCollection($metadata = null)
     {
@@ -1184,15 +1184,15 @@ class MetadataApi
      *
      * Creates a Metadata resource.
      *
-     * @param  \Gally\Rest\Model\Metadata $metadata The new Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The new Metadata resource (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gally\Rest\Model\Metadata, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gally\Rest\Model\MetadataMetadataRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function postMetadataCollectionWithHttpInfo($metadata = null)
     {
-        $returnType = '\Gally\Rest\Model\Metadata';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead';
         $request = $this->postMetadataCollectionRequest($metadata);
 
         try {
@@ -1244,7 +1244,7 @@ class MetadataApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gally\Rest\Model\Metadata',
+                        '\Gally\Rest\Model\MetadataMetadataRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1259,7 +1259,7 @@ class MetadataApi
      *
      * Creates a Metadata resource.
      *
-     * @param  \Gally\Rest\Model\Metadata $metadata The new Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The new Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1279,14 +1279,14 @@ class MetadataApi
      *
      * Creates a Metadata resource.
      *
-     * @param  \Gally\Rest\Model\Metadata $metadata The new Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The new Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function postMetadataCollectionAsyncWithHttpInfo($metadata = null)
     {
-        $returnType = '\Gally\Rest\Model\Metadata';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead';
         $request = $this->postMetadataCollectionRequest($metadata);
 
         return $this->client
@@ -1329,7 +1329,7 @@ class MetadataApi
     /**
      * Create request for operation 'postMetadataCollection'
      *
-     * @param  \Gally\Rest\Model\Metadata $metadata The new Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The new Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1431,11 +1431,11 @@ class MetadataApi
      * Replaces the Metadata resource.
      *
      * @param  string $id id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Gally\Rest\Model\Metadata
+     * @return \Gally\Rest\Model\MetadataMetadataRead
      */
     public function putMetadataItem($id, $metadata = null)
     {
@@ -1449,15 +1449,15 @@ class MetadataApi
      * Replaces the Metadata resource.
      *
      * @param  string $id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \Gally\Rest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Gally\Rest\Model\Metadata, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Gally\Rest\Model\MetadataMetadataRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function putMetadataItemWithHttpInfo($id, $metadata = null)
     {
-        $returnType = '\Gally\Rest\Model\Metadata';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead';
         $request = $this->putMetadataItemRequest($id, $metadata);
 
         try {
@@ -1509,7 +1509,7 @@ class MetadataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Gally\Rest\Model\Metadata',
+                        '\Gally\Rest\Model\MetadataMetadataRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1525,7 +1525,7 @@ class MetadataApi
      * Replaces the Metadata resource.
      *
      * @param  string $id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1546,14 +1546,14 @@ class MetadataApi
      * Replaces the Metadata resource.
      *
      * @param  string $id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function putMetadataItemAsyncWithHttpInfo($id, $metadata = null)
     {
-        $returnType = '\Gally\Rest\Model\Metadata';
+        $returnType = '\Gally\Rest\Model\MetadataMetadataRead';
         $request = $this->putMetadataItemRequest($id, $metadata);
 
         return $this->client
@@ -1597,7 +1597,7 @@ class MetadataApi
      * Create request for operation 'putMetadataItem'
      *
      * @param  string $id (required)
-     * @param  \Gally\Rest\Model\Metadata $metadata The updated Metadata resource (optional)
+     * @param  \Gally\Rest\Model\MetadataMetadataWrite $metadata The updated Metadata resource (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
