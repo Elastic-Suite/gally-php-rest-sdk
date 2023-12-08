@@ -1,6 +1,6 @@
 <?php
 /**
- * Metadata
+ * MetadataMetadataRead
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Gally\Rest\ObjectSerializer;
 
 /**
- * Metadata Class Doc Comment
+ * MetadataMetadataRead Class Doc Comment
  *
  * @category Class
  * @package  Gally\Rest
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Metadata implements ModelInterface, ArrayAccess
+class MetadataMetadataRead implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Metadata implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Metadata';
+    protected static $swaggerModelName = 'Metadata-metadata.read';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class Metadata implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'int',
         'entity' => 'string',
-        'sourceFields' => 'string[]'
+        'test' => 'string'
     ];
 
     /**
@@ -70,7 +70,7 @@ class Metadata implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => null,
         'entity' => null,
-        'sourceFields' => 'iri-reference'
+        'test' => null
     ];
 
     /**
@@ -102,7 +102,7 @@ class Metadata implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'entity' => 'entity',
-        'sourceFields' => 'sourceFields'
+        'test' => 'test'
     ];
 
     /**
@@ -113,7 +113,7 @@ class Metadata implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'entity' => 'setEntity',
-        'sourceFields' => 'setSourceFields'
+        'test' => 'setTest'
     ];
 
     /**
@@ -124,7 +124,7 @@ class Metadata implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'entity' => 'getEntity',
-        'sourceFields' => 'getSourceFields'
+        'test' => 'getTest'
     ];
 
     /**
@@ -189,7 +189,7 @@ class Metadata implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['entity'] = isset($data['entity']) ? $data['entity'] : null;
-        $this->container['sourceFields'] = isset($data['sourceFields']) ? $data['sourceFields'] : null;
+        $this->container['test'] = isset($data['test']) ? $data['test'] : null;
     }
 
     /**
@@ -268,25 +268,25 @@ class Metadata implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets sourceFields
+     * Gets test
      *
-     * @return string[]
+     * @return string
      */
-    public function getSourceFields()
+    public function getTest()
     {
-        return $this->container['sourceFields'];
+        return $this->container['test'];
     }
 
     /**
-     * Sets sourceFields
+     * Sets test
      *
-     * @param string[] $sourceFields sourceFields
+     * @param string $test test
      *
      * @return $this
      */
-    public function setSourceFields($sourceFields)
+    public function setTest($test)
     {
-        $this->container['sourceFields'] = $sourceFields;
+        $this->container['test'] = $test;
 
         return $this;
     }

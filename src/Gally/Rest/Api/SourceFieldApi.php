@@ -88,7 +88,7 @@ class SourceFieldApi
     }
 
     /**
-     * Operation addOptionsSourceFieldItem
+     * Operation bulkSourceFieldItem
      *
      * Creates a SourceField resource.
      *
@@ -99,14 +99,14 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return \Gally\Rest\Model\SourceFieldSourceFieldRead
      */
-    public function addOptionsSourceFieldItem($id, $sourceField = null)
+    public function bulkSourceFieldItem($id, $sourceField = null)
     {
-        list($response) = $this->addOptionsSourceFieldItemWithHttpInfo($id, $sourceField);
+        list($response) = $this->bulkSourceFieldItemWithHttpInfo($id, $sourceField);
         return $response;
     }
 
     /**
-     * Operation addOptionsSourceFieldItemWithHttpInfo
+     * Operation bulkSourceFieldItemWithHttpInfo
      *
      * Creates a SourceField resource.
      *
@@ -117,10 +117,10 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return array of \Gally\Rest\Model\SourceFieldSourceFieldRead, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addOptionsSourceFieldItemWithHttpInfo($id, $sourceField = null)
+    public function bulkSourceFieldItemWithHttpInfo($id, $sourceField = null)
     {
-        $returnType = '\Gally\Rest\Model\SourceFieldSourceFieldRead';
-        $request = $this->addOptionsSourceFieldItemRequest($id, $sourceField);
+        $returnType = '\Gally\Rest\Model\SourceFieldSourceFieldRead[]';
+        $request = $this->bulkSourceFieldItemRequest($id, $sourceField);
 
         try {
             $options = $this->createHttpClientOption();
@@ -182,7 +182,7 @@ class SourceFieldApi
     }
 
     /**
-     * Operation addOptionsSourceFieldItemAsync
+     * Operation bulkSourceFieldItemAsync
      *
      * Creates a SourceField resource.
      *
@@ -192,9 +192,9 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addOptionsSourceFieldItemAsync($id, $sourceField = null)
+    public function bulkSourceFieldItemAsync($id, $sourceField = null)
     {
-        return $this->addOptionsSourceFieldItemAsyncWithHttpInfo($id, $sourceField)
+        return $this->bulkSourceFieldItemAsyncWithHttpInfo($id, $sourceField)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -203,7 +203,7 @@ class SourceFieldApi
     }
 
     /**
-     * Operation addOptionsSourceFieldItemAsyncWithHttpInfo
+     * Operation bulkSourceFieldItemAsyncWithHttpInfo
      *
      * Creates a SourceField resource.
      *
@@ -213,10 +213,10 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addOptionsSourceFieldItemAsyncWithHttpInfo($id, $sourceField = null)
+    public function bulkSourceFieldItemAsyncWithHttpInfo($id, $sourceField = null)
     {
         $returnType = '\Gally\Rest\Model\SourceFieldSourceFieldRead';
-        $request = $this->addOptionsSourceFieldItemRequest($id, $sourceField);
+        $request = $this->bulkSourceFieldItemRequest($id, $sourceField);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -256,7 +256,7 @@ class SourceFieldApi
     }
 
     /**
-     * Create request for operation 'addOptionsSourceFieldItem'
+     * Create request for operation 'bulkSourceFieldItem'
      *
      * @param  string $id (required)
      * @param  \Gally\Rest\Model\SourceFieldSourceFieldWrite $sourceField The new SourceField resource (optional)
@@ -264,16 +264,16 @@ class SourceFieldApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function addOptionsSourceFieldItemRequest($id, $sourceField = null)
+    protected function bulkSourceFieldItemRequest($id, $sourceField = null)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling addOptionsSourceFieldItem'
+                'Missing the required parameter $id when calling bulkSourceFieldItem'
             );
         }
 
-        $resourcePath = '/source_fields/{id}/add_options';
+        $resourcePath = '/source_fields/bulk';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
