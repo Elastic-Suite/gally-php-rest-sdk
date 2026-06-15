@@ -10,9 +10,11 @@
  * @license   Open Software License v. 3.0 (OSL-3.0)
  */
 
-namespace Gally\Sdk\Client;
+namespace Gally\Sdk\Service\Cache;
 
-interface TokenCacheManagerInterface
+interface CacheManagerInterface
 {
-    public function getToken(callable $getToken, bool $useCache = true): string;
+    public function get(string $cacheKey, callable $callback, ?int $ttl = null): mixed;
+
+    public function clearCache(string $cacheKey): void;
 }

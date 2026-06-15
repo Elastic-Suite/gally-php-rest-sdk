@@ -135,7 +135,7 @@ final class Request
         return $this->priceGroupId;
     }
 
-    public function buildSearchQuery(): string
+    public function buildSearchQuery(bool $withTermSuggestions = false): string
     {
         $isProductQuery = 'product' === $this->metadata->getEntity();
         $hasSelectedFields = !empty($this->selectedFields);
@@ -158,6 +158,7 @@ final class Request
 
         $selectedFields = implode(' ', $selectedFields);
         $collection = $hasSelectedFields ? "collection { $selectedFields }" : '';
+        $termSuggestions = $this->isAutocomplete && $withTermSuggestions ? 'termSuggestions { entityType terms }' : '';
 
         return <<<GQL
             query searchQuery (
@@ -190,10 +191,7 @@ final class Request
                   hasMore
                   options { count label value }
                 }
-                termSuggestions {
-                  entityType
-                  terms
-                }
+                $termSuggestions
             }
           }
         GQL;
