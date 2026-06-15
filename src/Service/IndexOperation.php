@@ -14,12 +14,12 @@ namespace Gally\Sdk\Service;
 
 use Gally\Sdk\Client\Client;
 use Gally\Sdk\Client\Configuration;
-use Gally\Sdk\Client\TokenCacheManagerInterface;
 use Gally\Sdk\Entity\Index;
 use Gally\Sdk\Entity\LocalizedCatalog;
 use Gally\Sdk\Entity\Metadata;
 use Gally\Sdk\Repository\CatalogRepository;
 use Gally\Sdk\Repository\LocalizedCatalogRepository;
+use Gally\Sdk\Service\Cache\CacheManagerInterface;
 
 /**
  * Indexer manager service.
@@ -31,9 +31,9 @@ class IndexOperation
     protected Client $client;
     protected LocalizedCatalogRepository $localizedCatalogRepository;
 
-    public function __construct(Configuration $configuration, ?TokenCacheManagerInterface $tokenCacheManager = null)
+    public function __construct(Configuration $configuration, ?CacheManagerInterface $cacheManager = null)
     {
-        $this->client = new Client($configuration, $tokenCacheManager);
+        $this->client = new Client($configuration, $cacheManager);
         $catalogRepository = new CatalogRepository($this->client);
         $this->localizedCatalogRepository = new LocalizedCatalogRepository($this->client, $catalogRepository);
     }

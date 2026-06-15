@@ -14,13 +14,13 @@ namespace Gally\Sdk\Service;
 
 use Gally\Sdk\Client\Client;
 use Gally\Sdk\Client\Configuration;
-use Gally\Sdk\Client\TokenCacheManagerInterface;
 use Gally\Sdk\Entity\Metadata;
 use Gally\Sdk\Entity\SourceField;
 use Gally\Sdk\GraphQl\Request;
 use Gally\Sdk\GraphQl\Response;
 use Gally\Sdk\Repository\MetadataRepository;
 use Gally\Sdk\Repository\SourceFieldRepository;
+use Gally\Sdk\Service\Cache\CacheManagerInterface;
 
 /**
  * Search manager service.
@@ -34,9 +34,12 @@ class SearchManager
     /** @var array<string, array> */
     private array $searchCache = [];
 
-    public function __construct(Configuration $configuration, ?TokenCacheManagerInterface $tokenCacheManager = null)
-    {
-        $client = new Client($configuration, $tokenCacheManager);
+    public function __construct(
+        Configuration $configuration,
+        private readonly BundleManager $bundleManager,
+        ?CacheManagerInterface $cacheManager = null,
+    ) {
+        $client = new Client($configuration, $cacheManager);
         $this->client = $client;
         $this->sourceFieldRepository = new SourceFieldRepository($client, new MetadataRepository($client));
     }
@@ -103,12 +106,13 @@ class SearchManager
     public function search(Request $request, bool $isPrivate = false): Response
     {
         $priceGroup = $request->getPriceGroupId();
+        $withTermSuggestions = $this->bundleManager->hasBundle(BundleManager::TERM_SUGGESTION_BUNDLE_NAME);
 
-        $cacheKey = md5($request->buildSearchQuery() . json_encode($request->getVariables()) . ($priceGroup ?? '') . ($isPrivate ? '1' : '0'));
+        $cacheKey = md5($request->buildSearchQuery($withTermSuggestions) . json_encode($request->getVariables()) . ($priceGroup ?? '') . ($isPrivate ? '1' : '0'));
 
         if (!isset($this->searchCache[$cacheKey])) {
             $this->searchCache[$cacheKey] = $this->client->graphql(
-                $request->buildSearchQuery(),
+                $request->buildSearchQuery($withTermSuggestions),
                 $request->getVariables(),
                 $priceGroup ? ['price-group-id' => $priceGroup] : [],
                 $isPrivate

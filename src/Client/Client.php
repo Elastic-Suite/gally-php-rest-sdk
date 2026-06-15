@@ -12,17 +12,22 @@
 
 namespace Gally\Sdk\Client;
 
+use Gally\Sdk\Service\Cache\CacheManagerInterface;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 
 class Client
 {
+    public const API_TOKEN_CACHE_KEY = 'api_token';
+
     private ?GuzzleClient $client = null;
+
+    private ?string $token = null;
 
     public function __construct(
         private readonly Configuration $configuration,
-        private readonly ?TokenCacheManagerInterface $tokenCacheManager = null,
+        private readonly ?CacheManagerInterface $cacheManager = null,
     ) {
     }
 
@@ -89,10 +94,7 @@ class Client
             );
 
             if ($isPrivate) {
-                $token = $this->tokenCacheManager
-                    ? $this->tokenCacheManager->getToken([$this, 'getAuthorizationToken'])
-                    : $this->getAuthorizationToken();
-                $headers['Authorization'] = 'Bearer ' . $token;
+                $headers['Authorization'] = 'Bearer ' . $this->getToken();
             }
 
             $queryParams = 'GET' === $method ? http_build_query($data) : '';
@@ -105,11 +107,7 @@ class Client
             } catch (GuzzleException $e) {
                 // If we get a 401, we try to generate a new token.
                 if ($isPrivate && 401 === $e->getCode()) {
-                    $token = $this->tokenCacheManager
-                        ? $this->tokenCacheManager->getToken([$this, 'getAuthorizationToken'], false)
-                        : $this->getAuthorizationToken();
-
-                    $headers['Authorization'] = 'Bearer ' . $token;
+                    $headers['Authorization'] = 'Bearer ' . $this->resetToken();
 
                     $response = $this->getClient()->request(
                         $method,
@@ -134,6 +132,32 @@ class Client
         }
 
         return $result;
+    }
+
+    public function getToken(): string
+    {
+        if (!$this->cacheManager instanceof CacheManagerInterface) {
+            return $this->getAuthorizationToken();
+        }
+
+        if (null === $this->token) {
+            $token = $this->cacheManager->get(self::API_TOKEN_CACHE_KEY, [$this, 'getAuthorizationToken']);
+            $this->token = \is_scalar($token) ? (string) $token : null;
+        }
+
+        return (string) $this->token;
+    }
+
+    public function resetToken(): string
+    {
+        if (!$this->cacheManager instanceof CacheManagerInterface) {
+            return $this->getAuthorizationToken();
+        }
+
+        $this->token = null;
+        $this->cacheManager->clearCache(self::API_TOKEN_CACHE_KEY);
+
+        return $this->getToken();
     }
 
     public function getAuthorizationToken(): string

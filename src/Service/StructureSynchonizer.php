@@ -14,7 +14,6 @@ namespace Gally\Sdk\Service;
 
 use Gally\Sdk\Client\Client;
 use Gally\Sdk\Client\Configuration;
-use Gally\Sdk\Client\TokenCacheManagerInterface;
 use Gally\Sdk\Entity\AbstractEntity;
 use Gally\Sdk\Entity\LocalizedCatalog;
 use Gally\Sdk\Entity\Metadata;
@@ -26,6 +25,7 @@ use Gally\Sdk\Repository\LocalizedCatalogRepository;
 use Gally\Sdk\Repository\MetadataRepository;
 use Gally\Sdk\Repository\SourceFieldOptionRepository;
 use Gally\Sdk\Repository\SourceFieldRepository;
+use Gally\Sdk\Service\Cache\CacheManagerInterface;
 
 /**
  * Synchronize gally catalogs structure with ecommerce data.
@@ -38,9 +38,9 @@ class StructureSynchonizer
     private SourceFieldRepository $sourceFieldRepository;
     private SourceFieldOptionRepository $sourceFieldOptionRepository;
 
-    public function __construct(Configuration $configuration, ?TokenCacheManagerInterface $tokenCacheManager = null)
+    public function __construct(Configuration $configuration, ?CacheManagerInterface $cacheManager = null)
     {
-        $client = new Client($configuration, $tokenCacheManager);
+        $client = new Client($configuration, $cacheManager);
         $this->catalogRepository = new CatalogRepository($client);
         $this->localizedCatalogRepository = new LocalizedCatalogRepository($client, $this->catalogRepository);
         $this->metadataRepository = new MetadataRepository($client);
