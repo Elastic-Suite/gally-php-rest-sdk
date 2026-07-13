@@ -17,12 +17,14 @@ use Gally\Sdk\Client\Configuration;
 use Gally\Sdk\Entity\AbstractEntity;
 use Gally\Sdk\Entity\LocalizedCatalog;
 use Gally\Sdk\Entity\Metadata;
+use Gally\Sdk\Entity\RecommenderType;
 use Gally\Sdk\Entity\SourceField;
 use Gally\Sdk\Entity\SourceFieldOption;
 use Gally\Sdk\Repository\AbstractRepository;
 use Gally\Sdk\Repository\CatalogRepository;
 use Gally\Sdk\Repository\LocalizedCatalogRepository;
 use Gally\Sdk\Repository\MetadataRepository;
+use Gally\Sdk\Repository\RecommenderTypeRepository;
 use Gally\Sdk\Repository\SourceFieldOptionRepository;
 use Gally\Sdk\Repository\SourceFieldRepository;
 use Gally\Sdk\Service\Cache\CacheManagerInterface;
@@ -37,6 +39,7 @@ class StructureSynchonizer
     private MetadataRepository $metadataRepository;
     private SourceFieldRepository $sourceFieldRepository;
     private SourceFieldOptionRepository $sourceFieldOptionRepository;
+    private RecommenderTypeRepository $recommenderTypeRepository;
 
     public function __construct(Configuration $configuration, ?CacheManagerInterface $cacheManager = null)
     {
@@ -46,6 +49,7 @@ class StructureSynchonizer
         $this->metadataRepository = new MetadataRepository($client);
         $this->sourceFieldRepository = new SourceFieldRepository($client, $this->metadataRepository);
         $this->sourceFieldOptionRepository = new SourceFieldOptionRepository($client, $this->sourceFieldRepository);
+        $this->recommenderTypeRepository = new RecommenderTypeRepository($client);
     }
 
     /**
@@ -250,6 +254,43 @@ class StructureSynchonizer
         } else {
             $this->sourceFieldOptionRepository->createOrUpdate($sourceFieldOption);
         }
+    }
+
+    /**
+     * @param iterable<RecommenderType> $recommenderTypes
+     */
+    public function syncAllRecommenderTypes(iterable $recommenderTypes, bool $clean = false, bool $dryRun = true): void
+    {
+        $existingRecommenderTypes = $this->recommenderTypeRepository->findAll();
+
+        foreach ($recommenderTypes as $recommenderType) {
+            $this->syncRecommenderType($recommenderType, true);
+            unset($existingRecommenderTypes[$this->recommenderTypeRepository->getIdentity($recommenderType)]);
+        }
+
+        if ($clean) {
+            foreach ($existingRecommenderTypes as $recommenderType) {
+                if (!$dryRun) {
+                    $this->recommenderTypeRepository->delete($recommenderType);
+                }
+            }
+
+            echo \sprintf("  Delete %d recommender type(s)\n", \count($existingRecommenderTypes));
+            echo "\n";
+        }
+    }
+
+    public function syncRecommenderType(RecommenderType $recommenderType, bool $isFullContext = false): void
+    {
+        if (!$isFullContext) {
+            $this->fetchEntityUri(
+                $recommenderType,
+                $this->recommenderTypeRepository,
+                ['code' => $recommenderType->getCode()]
+            );
+        }
+
+        $this->recommenderTypeRepository->createOrUpdate($recommenderType);
     }
 
     private function fetchEntityUri(AbstractEntity $entity, AbstractRepository $repository, array $criteria): void
