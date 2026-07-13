@@ -122,7 +122,7 @@ class SearchManager
         return new Response($request, $this->searchCache[$cacheKey]['data']);
     }
 
-    public function viewMoreProductFilterOption(Request $request, string $aggregationField): array // todo response ?
+    public function viewMoreProductFilterOption(Request $request, string $aggregationField, ?string $optionSearch = null): array // todo response ?
     {
         $query = <<<GQL
             query viewMoreProductFacetOptions (
@@ -131,6 +131,7 @@ class SearchManager
                 \$currentCategoryId: String,
                 \$filter: [ProductFieldFilterInput],
                 \$aggregation: String!,
+                \$optionSearch: String,
             ) {
                 viewMoreProductFacetOptions (
                     localizedCatalog: \$localizedCatalog,
@@ -138,6 +139,7 @@ class SearchManager
                     currentCategoryId: \$currentCategoryId,
                     filter: \$filter,
                     aggregation: \$aggregation,
+                    optionSearch: \$optionSearch,
                 ) {
                     value
                     label
@@ -149,13 +151,17 @@ class SearchManager
         $variables = $request->getVariables();
         $response = $this->client->graphql(
             $query,
-            array_filter([
-                'aggregation' => $aggregationField,
-                'localizedCatalog' => $variables['localizedCatalog'],
-                'search' => $variables['search'] ?? null,
-                'filter' => $variables['filter'] ?? null,
-                'currentCategoryId' => $variables['currentCategoryId'] ?? null,
-            ]),
+            array_filter(
+                [
+                    'aggregation' => $aggregationField,
+                    'localizedCatalog' => $variables['localizedCatalog'],
+                    'search' => $variables['search'] ?? null,
+                    'filter' => $variables['filter'] ?? null,
+                    'currentCategoryId' => $variables['currentCategoryId'] ?? null,
+                    'optionSearch' => $optionSearch,
+                ],
+                static fn (mixed $value): bool => null !== $value
+            ),
             [],
             false
         );
