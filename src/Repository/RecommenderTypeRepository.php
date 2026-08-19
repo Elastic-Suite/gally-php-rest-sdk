@@ -14,11 +14,16 @@ namespace Gally\Sdk\Repository;
 
 use Gally\Sdk\Entity\AbstractEntity;
 use Gally\Sdk\Entity\RecommenderType;
+use Gally\Sdk\Service\Cache\CacheManagerInterface;
 
 class RecommenderTypeRepository extends AbstractRepository
 {
     protected static array $entityByIdentity = [];
     protected static array $entityByUri = [];
+
+    /** Recommender types are admin-managed in Gally and change rarely: cache the full list. */
+    private const CACHE_KEY = 'recommender_types';
+    private const CACHE_TTL = 300;
 
     public function getEntityCode(): string
     {
@@ -32,6 +37,17 @@ class RecommenderTypeRepository extends AbstractRepository
         }
 
         return $entity->getCode();
+    }
+
+    public function findAll(): array
+    {
+        $cacheManager = $this->client->getCacheManager();
+        if (!$cacheManager instanceof CacheManagerInterface) {
+            return parent::findAll();
+        }
+
+        /** @var array<RecommenderType> */
+        return $cacheManager->get(self::CACHE_KEY, fn () => parent::findAll(), self::CACHE_TTL);
     }
 
     protected function buildEntityObject(array $rawEntity): RecommenderType

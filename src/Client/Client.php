@@ -31,6 +31,11 @@ class Client
     ) {
     }
 
+    public function getCacheManager(): ?CacheManagerInterface
+    {
+        return $this->cacheManager;
+    }
+
     public function get(string $endpoint, array $data = [], bool $isPrivate = true): array
     {
         return $this->query('GET', $endpoint, $data, [], $isPrivate);
