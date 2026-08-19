@@ -82,7 +82,7 @@ final class Request
                 : ($this->searchQuery ? 'product_search' : 'product_catalog');
         }
 
-        return null;
+        return $this->isAutocomplete ? 'autocomplete' : null;
     }
 
     public function getLocalizedCatalog(): LocalizedCatalog
@@ -154,6 +154,11 @@ final class Request
             $typePrefix = 'Product';
             $specificVars = '$currentCategoryId: String, $requestType: ProductRequestTypeEnum!';
             $specificFields = 'currentCategoryId: $currentCategoryId, requestType: $requestType';
+        } elseif ($this->isAutocomplete) {
+            // Non-product autocomplete (e.g. category): scopes aggregations to the source
+            // fields flagged "used in autocomplete" server-side, same mechanism as products.
+            $specificVars = '$requestType: RequestTypeEnum';
+            $specificFields = 'requestType: $requestType';
         }
 
         $selectedFields = implode(' ', $selectedFields);
