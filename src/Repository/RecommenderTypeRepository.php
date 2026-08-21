@@ -22,7 +22,7 @@ class RecommenderTypeRepository extends AbstractRepository
     protected static array $entityByUri = [];
 
     /** Recommender types are admin-managed in Gally and change rarely: cache the full list. */
-    private const CACHE_KEY = 'recommender_types';
+    public const CACHE_KEY = 'recommender_types';
     private const CACHE_TTL = 300;
 
     public function getEntityCode(): string
