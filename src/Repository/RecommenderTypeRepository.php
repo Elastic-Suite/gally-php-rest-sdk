@@ -22,7 +22,7 @@ class RecommenderTypeRepository extends AbstractRepository
     protected static array $entityByUri = [];
 
     /** Recommender types are admin-managed in Gally and change rarely: cache the full list. */
-    public const CACHE_KEY = 'recommender_types';
+    public const RECOMMENDER_TYPES_CACHE_KEY = 'recommender_types';
     private const CACHE_TTL = 300;
 
     public function getEntityCode(): string
@@ -47,7 +47,7 @@ class RecommenderTypeRepository extends AbstractRepository
         }
 
         /** @var array<RecommenderType> */
-        return $cacheManager->get(self::CACHE_KEY, fn () => parent::findAll(), self::CACHE_TTL);
+        return $cacheManager->get(self::RECOMMENDER_TYPES_CACHE_KEY, fn () => parent::findAll(), self::CACHE_TTL);
     }
 
     protected function buildEntityObject(array $rawEntity): RecommenderType
