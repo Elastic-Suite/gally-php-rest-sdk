@@ -146,7 +146,7 @@ class StructureSynchonizer
             $nonSystemExistingMetadata = [];
             /** @var Metadata $metadata */
             foreach ($existingMetadatas as $metadata) {
-                if (!\in_array($metadata->getEntity(), ['product', 'category'], true)) {
+                if (!$metadata->isSystem()) {
                     $nonSystemExistingMetadata[] = $metadata;
                 }
             }

@@ -38,6 +38,7 @@ class MetadataRepository extends AbstractRepository
     {
         return new Metadata(
             $rawEntity['entity'],
+            $rawEntity['isSystem'] ?? false,
             $rawEntity['@id'] ?? null,
         );
     }
