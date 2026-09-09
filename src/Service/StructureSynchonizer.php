@@ -261,6 +261,7 @@ class StructureSynchonizer
      */
     public function syncAllRecommenderTypes(iterable $recommenderTypes, bool $clean = false, bool $dryRun = true): void
     {
+        $this->recommenderTypeRepository->clearCache();
         $existingRecommenderTypes = $this->recommenderTypeRepository->findAll();
 
         foreach ($recommenderTypes as $recommenderType) {

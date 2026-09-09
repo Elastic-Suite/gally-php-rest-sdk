@@ -39,6 +39,14 @@ class RecommenderTypeRepository extends AbstractRepository
         return $entity->getCode();
     }
 
+    public function clearCache(): void
+    {
+        $cacheManager = $this->client->getCacheManager();
+        if ($cacheManager instanceof CacheManagerInterface) {
+            $cacheManager->clearCache(self::RECOMMENDER_TYPES_CACHE_KEY);
+        }
+    }
+
     public function findAll(): array
     {
         $cacheManager = $this->client->getCacheManager();
@@ -46,8 +54,13 @@ class RecommenderTypeRepository extends AbstractRepository
             return parent::findAll();
         }
 
-        /** @var array<RecommenderType> */
-        return $cacheManager->get(self::RECOMMENDER_TYPES_CACHE_KEY, fn () => parent::findAll(), self::CACHE_TTL);
+        /** @var array<RecommenderType> $entities */
+        $entities = $cacheManager->get(self::RECOMMENDER_TYPES_CACHE_KEY, fn () => parent::findAll(), self::CACHE_TTL);
+        foreach ($entities as $entity) {
+            $this->saveInCache($entity);
+        }
+
+        return $entities;
     }
 
     protected function buildEntityObject(array $rawEntity): RecommenderType
