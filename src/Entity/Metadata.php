@@ -21,6 +21,7 @@ class Metadata extends AbstractEntity
 
     public function __construct(
         private string $entity,
+        private bool $isSystem = false,
         ?string $uri = null,
     ) {
         $this->uri = $uri;
@@ -29,6 +30,11 @@ class Metadata extends AbstractEntity
     public function getEntity(): string
     {
         return $this->entity;
+    }
+
+    public function isSystem(): bool
+    {
+        return $this->isSystem;
     }
 
     public function __toJson(): array
